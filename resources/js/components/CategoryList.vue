@@ -1,11 +1,12 @@
 <template>
     <div class="listContainer" v-scroll-spy-active v-scroll-spy-link>
         <div class="categoryContainer">
-                <div v-for="(category,index) in categoryList" :key="index" class="categoryList"
-                :class="{customActive:index===scrollPositionId}"
-                @click="select(index)">
-                   <a>{{category.name}}</a>
-                </div>
+                <a v-for="(category,index) in categoryList" :key="index" class="categoryList"
+                :class="{customActive:index===scrollPositionId}" @click="select(index)"
+                >
+                   {{category.name}}</a>
+
+
         </div>
     </div>
 </template>
@@ -24,7 +25,10 @@ export default {
     ...mapMutations(["updateCategoryList"]),
     ...mapActions(["getCategoryList", "setScrollPositionId"]),
     select(index) {
-      this.setScrollPositionId(index);
+      //   window.scrollY = 56;
+      //   console.log("scroll Y", window.scrollY);
+      //   console.log("screen Y", window.screenY);
+      //   this.setScrollPositionId(index);
       //var name = $(this).attr("data-row-id");
       //var id = "#" + name;
       //var top = $(id).first().offset().top -60;
@@ -43,6 +47,7 @@ export default {
   position: relative;
   font-weight: bold;
   letter-spacing: 0.4px;
+
   //
   .categoryContainer {
     position: fixed;
@@ -51,7 +56,8 @@ export default {
     height: 80%;
     margin-top: 15%;
     margin-bottom: 15%;
-
+    display: flex;
+    flex-direction: column;
     .categoryList {
       padding: 5px 10px;
       font-weight: 700;
