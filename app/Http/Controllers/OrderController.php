@@ -219,7 +219,7 @@ class OrderController extends Controller
             /** if no chinese version row, return en version */
             if($targe_product === null)
             {
-                $targe_product =Product_description::where('product_id',$order_item["product_id"])->where('language_id',1)->first();
+                $targe_product =Product_description::where('product_id',$order_item["product_id"])->first();
             }
             $upc = Product::where('product_id',$order_item["product_id"])->first()->upc;
         /**make price */

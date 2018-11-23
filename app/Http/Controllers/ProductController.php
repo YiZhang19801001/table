@@ -45,9 +45,25 @@ class ProductController extends Controller
         /** clear mode do not need details [1], full detail mode need everything. [9]*/
         $mode = config("app.show_options");
 
+        /** get all categories first */
+        //this is the result
+        $categories = array();
 
-        //fetch all categories, used for grouping products
-        $categories = Category_description::where('language_id',$lang)->get();
+        //fetch category_descriptions from database
+        $categories_ids = Category_description::select('category_id')->distinct()->get();
+
+        //mapping value
+        foreach ($categories_ids as $category_id) {
+            $category_in_db = Category_description::where('category_id',$category_id->category_id)->where('language_id',$lang)->first();
+            if($category_in_db==null){
+                $category_in_db = Category_description::where('category_id',$category_id->category_id)->first();
+            }
+
+            $category["category_id"] = $category_in_db->category_id;
+            $category["name"] = $category_in_db->name;
+
+            array_push($categories,$category);
+        }
 
         //declare an array to store the new [product_list(group by category)]
         $result=[];
@@ -57,7 +73,7 @@ class ProductController extends Controller
             $new_category["name"]   = $category["name"];
             $new_category["id"]     = $category["category_id"];
 
-            $p_ids = Product_to_category::where('category_id',$category->category_id)->get();
+            $p_ids = Product_to_category::where('category_id',$category["category_id"])->get();
             $products_groupby_category=[];
 
             foreach ($p_ids as $id) {
@@ -65,7 +81,9 @@ class ProductController extends Controller
 
                 //select target product in DB
                 $target_product = Product_description::where('product_id',$id->product_id)->where('language_id',$lang)->first();
-
+                if($target_product === null){
+                    $target_product = Product_description::where('product_id',$id->product_id)->first();
+                }
                 /** create price value*/
                 //fetch price first
                 $price = Product::where('product_id',$id->product_id)->first()->price;
@@ -166,7 +184,8 @@ class ProductController extends Controller
             /**add option name & language_id,sort_order to the obj
              * oc_option_description: [option_id:int][language_id:bit][name:string]
             */
-            $option_name = Option_description::where('option_id',$option_id->option_id)->where('language_id',$lang)->first()->name;
+            $option_name = Option_description::where('option_id',$option_id->option_id)->where('language_id',$lang)->first();
+            $option_name = $option_name["name"];
 
             /**ToDo: may use for display*/
             // $sort_order = Option::where('option_id',$option_id)->first()->sort_order;
@@ -187,8 +206,9 @@ class ProductController extends Controller
                     /** oc_option_value_description
                      * [option_value_id:int(11)][language_id:int(11)][option_id:int(11)][name:varchar(128)]
                     */
-                    $option_value_name = Option_value_description::where('option_value_id',$option_value_id)->where('language_id',$lang)->first()->name;
+                    $option_value_name = Option_value_description::where('option_value_id',$option_value_id)->where('language_id',$lang)->first();
 
+                    $option_value_name = $option_value_name["name"];
                     /** create price
                      * parse price to float */
                     $price = $product_option_value->price;
