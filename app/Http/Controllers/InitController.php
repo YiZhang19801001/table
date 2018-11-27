@@ -29,6 +29,9 @@ class InitController extends Controller
 
 
         $app_conf["show_option"] = config("app.show_options");
+        $app_conf["preorder"]    = config("app.perorder");
+        $app_conf["QrCodeImage"] = config("app.QrCodeImage");
+        $app_conf["QrImageUrl"]  = config("app.QrImageUrl");
 
         /**return app_conf to client side */
         return response()->json([

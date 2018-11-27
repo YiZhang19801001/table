@@ -1,14 +1,26 @@
 <template>
-<div>
-      <div v-if="spinnerShow" class="spinner-container">
-          <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-              <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-          </svg>
-      </div>
-
-
-  <router-view></router-view>
-</div>
+  <div>
+    <div v-if="spinnerShow" class="spinner-container">
+      <svg
+        class="spinner"
+        width="65px"
+        height="65px"
+        viewBox="0 0 66 66"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          class="path"
+          fill="none"
+          stroke-width="6"
+          stroke-linecap="round"
+          cx="33"
+          cy="33"
+          r="30"
+        ></circle>
+      </svg>
+    </div>
+    <router-view></router-view>
+  </div>
 </template>
 
 
@@ -28,7 +40,8 @@ export default {
       "cdt",
       "v",
       "site",
-      "table_number"
+      "table_number",
+      "app_conf"
     ])
   },
   mounted() {
@@ -43,6 +56,14 @@ export default {
       this.setLang(1);
     }
     this.setAppConfig();
+
+    this.delay(1000).then(res => {
+      if (this.app_conf.preorder && !localStorage.getItem("preorderList")) {
+        this.$router.push(`/table/public/preorder`);
+      } else if (this.app_conf.preorder) {
+        this.$router.push(`/table/public/confirm`);
+      }
+    });
   },
   methods: {
     ...mapActions([
@@ -53,7 +74,14 @@ export default {
       "setAppConfig",
       "setSpinnerStatus",
       "setLang"
-    ])
+    ]),
+    delay(time) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve("resolved");
+        }, time);
+      });
+    }
   },
   components: {
     Confirm

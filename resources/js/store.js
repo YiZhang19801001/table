@@ -63,6 +63,10 @@ export default {
         totalQuantityOfOrder: state => {
             let sum = 0;
 
+            if (state.orderList === null || state.orderList.length === 0) {
+                return 0;
+            }
+
             state.orderList.forEach(el => {
                 sum = sum + el.quantity;
             });
@@ -70,7 +74,9 @@ export default {
         },
         totalPriceOfOrder: state => {
             let sum = 0;
-
+            if (state.orderList === null || state.orderList.length === 0) {
+                return 0;
+            }
             state.orderList.forEach(el => {
                 let option_sum = 0;
                 if (state.app_conf.show_option) {
@@ -132,26 +138,109 @@ export default {
             });
         },
         updateOrderList(state, payload) {
-            state.orderList = payload.pending_list;
-            state.historyOrderList = payload.ordered_list;
+            if (state.app_conf.preorder) {
+                state.orderList = JSON.parse(payload);
+            } else {
+                state.orderList = payload.pending_list;
+                state.historyOrderList = payload.ordered_list;
+            }
         },
         AddNewItemToOrderList(state, payload) {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
-            axios.post("/table/public/api/orderitem", {
-                orderItem: payload,
-                orderId: state.orderId,
-                table_id: state.table_number,
-                lang: state.lang
-            });
+            /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
+            let flag = true;
+
+            console.log(payload);
+            if (state.app_conf.preorder) {
+                for (let i = 0; i < state.orderList.length; i++) {
+                    if (
+                        state.orderList[i].item.product_id !==
+                        payload.product_id
+                    ) {
+                        flag = false;
+
+                        break;
+                    }
+
+                    if (state.orderList[i].item.options.length > 0) {
+                        for (
+                            let a = 0;
+                            a < state.orderList[i].item.options.length;
+                            a++
+                        ) {
+                            const option = state.orderList[i].item.options[a];
+                            const new_option = payload.options[a];
+                            if (option.pickedOption !== new_option) {
+                                flag = false;
+
+                                break;
+                            }
+                        }
+                    }
+
+                    if (flag === false || state.orderList[i].item.choices < 1) {
+                        break;
+                    } else {
+                        for (
+                            let b = 0;
+                            b < state.orderList[i].item.choices.length;
+                            b++
+                        ) {
+                            const choice = state.orderList[i].item.choices[b];
+                            const new_choice = payload.choices[b];
+                            if (
+                                choice.pickedChoice !== new_choice.pickedChoice
+                            ) {
+                                flag = false;
+
+                                break;
+                            }
+                        }
+                    }
+
+                    if (flag) {
+                        state.orderList[i].quantity++;
+                    }
+                }
+                // if product_id not exist add new
+                if (!flag) {
+                    state.orderList.push({ item: payload, quantity: 1 });
+                }
+                localStorage.setItem(
+                    "preorderList",
+                    JSON.stringify(state.orderList)
+                );
+            } else {
+                axios.post("/table/public/api/orderitem", {
+                    orderItem: payload,
+                    orderId: state.orderId,
+                    table_id: state.table_number,
+                    lang: state.lang
+                });
+            }
         },
         IncreaseItemQuantityInOrderList(state, newItem) {
-            axios.post("/table/public/api/increase", {
-                orderItem: newItem,
-                orderId: state.orderId
-            });
+            if (state.app_conf.preorder) {
+                state.orderList[newItem].quantity++;
+                localStorage.setItem(
+                    "preorderList",
+                    JSON.stringify(state.orderList)
+                );
+            } else {
+                axios.post("/table/public/api/increase", {
+                    orderItem: newItem,
+                    orderId: state.orderId
+                });
+            }
         },
         RemoveItemFromOrderList(state, newItem) {
             state.orderList.splice(state.orderList.indexOf(newItem), 1);
+            if (state.app_conf.preorder) {
+                localStorage.setItem(
+                    "preorderList",
+                    JSON.stringify(state.orderList)
+                );
+            }
         },
         toggleSpinner(state, status) {
             state.spinnerShow = status;
@@ -163,10 +252,23 @@ export default {
             state.table_number = payload;
         },
         decreaseQuantity(state, payload) {
-            axios.post("/table/public/api/decrease", {
-                orderItem: payload,
-                orderId: state.orderId
-            });
+            if (state.app_conf.preorder) {
+                if (state.orderList[payload].quantity > 1) {
+                    state.orderList[payload].quantity--;
+                } else {
+                    state.orderList.splice(payload, 1);
+                }
+
+                localStorage.setItem(
+                    "preorderList",
+                    JSON.stringify(state.orderList)
+                );
+            } else {
+                axios.post("/table/public/api/decrease", {
+                    orderItem: payload,
+                    orderId: state.orderId
+                });
+            }
         },
         updateScrollPositionId(state, newId) {
             state.scrollPositionId = newId;

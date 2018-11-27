@@ -36,6 +36,10 @@ class OrderController extends Controller
 
     public function post(Request $request)
     {
+        if(isset($request->preorder) && $request->preorder === true)
+        {
+            return response()->json(200);
+        }
         $mode = config('app.show_options');
         $new_item = $request->orderItem;
         $arr_order_items = Temp_order_item::where('product_id',$new_item["product_id"])->where('order_id',$request->orderId)->where('oc_order_id',null)->get();
@@ -119,6 +123,11 @@ class OrderController extends Controller
     /** fetch the up to date order list once */
     public function getCart(Request $request)
     {
+    /** check is preorder or not */
+        if(isset($request->preorder) && $request->preorder===true)
+        {
+            return $request->json(200);
+        }
     /**validate users */
         //check if this QRcode contain all infos with correct format
         if($request->cdt==null||$request->v==null){

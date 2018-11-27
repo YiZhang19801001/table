@@ -1,32 +1,37 @@
 <template>
-    <div class="cart-item">
-
-        <span class="shoppingCart-item-name">
-            <p class="orderItem-name">
-                <span class="orderItem-name-text">{{orderItem.item.name}}</span>
-
-            </p>
-            <ul v-if="app_conf.show_option">
-                <li class="orderItem-choice" v-for="(choice,index) in orderItem.item.choices" :key="`choice${index}`">
-                    {{choice.type}} : {{choice.pickedChoice}} {{choice.price}}
-                </li>
-                <li class="orderItem-choice" v-for="(option,index2) in orderItem.item.options" :key="`option${index2}`">
-                    <span>{{option.option_name}}</span>
-                    <span>{{option.pickedOption}}</span>
-                    <span>{{app_conf.currency}} ${{option.price}}</span>
-                </li>
-            </ul>
-        </span>
-        <span class="shoppingCart-item-price">
-            {{totalPrice}}
-
-        </span>
-        <div class="quantity-wrap">
-            <span class="increase-button" @click="increase()"><i class="material-icons">add</i></span>
-            <span class="orderItem-quantity">{{orderItem.quantity}}</span>
-            <span class="decrease-button" @click="decrease()"><i class="material-icons">remove</i></span>
-        </div>
+  <div class="cart-item">
+    <span class="shoppingCart-item-name">
+      <p class="orderItem-name">
+        <span class="orderItem-name-text">{{orderItem.item.name}}</span>
+      </p>
+      <ul v-if="app_conf.show_option">
+        <li
+          class="orderItem-choice"
+          v-for="(choice,index) in orderItem.item.choices"
+          :key="`choice${index}`"
+        >{{choice.type}} : {{choice.pickedChoice}} {{choice.price}}</li>
+        <li
+          class="orderItem-choice"
+          v-for="(option,index2) in orderItem.item.options"
+          :key="`option${index2}`"
+        >
+          <span>{{option.option_name}}</span>
+          <span>{{option.pickedOption}}</span>
+          <span>{{app_conf.currency}} ${{option.price}}</span>
+        </li>
+      </ul>
+    </span>
+    <span class="shoppingCart-item-price">{{totalPrice}}</span>
+    <div class="quantity-wrap">
+      <span class="increase-button" @click="increase()">
+        <i class="material-icons">add</i>
+      </span>
+      <span class="orderItem-quantity">{{orderItem.quantity}}</span>
+      <span class="decrease-button" @click="decrease()">
+        <i class="material-icons">remove</i>
+      </span>
     </div>
+  </div>
 </template>
 <script>
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
@@ -34,7 +39,8 @@ import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   name: "app-cart-item",
   props: {
-    orderItem: {}
+    orderItem: {},
+    index: 0
   },
   data() {
     return {
@@ -75,10 +81,18 @@ export default {
       this.isExpand = !this.isExpand;
     },
     increase() {
-      this.increaseItemQuantityInOrderList(this.orderItem);
+      if (this.app_conf.preorder) {
+        this.increaseItemQuantityInOrderList(this.index);
+      } else {
+        this.increaseItemQuantityInOrderList(this.orderItem);
+      }
     },
     decrease() {
-      this.decreaseItemQuantityInOrderList(this.orderItem);
+      if (this.app_conf.preorder) {
+        this.decreaseItemQuantityInOrderList(this.index);
+      } else {
+        this.decreaseItemQuantityInOrderList(this.orderItem);
+      }
     }
   }
 };

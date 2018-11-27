@@ -4,60 +4,27 @@
     <section>
       <div class="payment-method">
         <h6>
-          <router-link :to="pathFrom">
+          <router-link :to="`/table/public/preorder`">
             <i class="material-icons">arrow_back_ios</i>
           </router-link>
-          {{app_conf.payment_method_title}}
+          {{app_conf.preorder_confirm_text}}
         </h6>
-        <div class="icon-group">
-          <div class="payment-choice">
-            <img src="/table/public/wechat.png" alt>
-            <p>
-              <input type="radio" value="credit" name="paymentMethod" v-model="paymentMethod">
-              <span>{{app_conf.weChat}}</span>
-            </p>
-          </div>
-          <div class="payment-choice">
-            <img src="/table/public/paypal.png" alt>
-            <p>
-              <input type="radio" value="paypal" name="paymentMethod" v-model="paymentMethod">
-              <span>{{app_conf.paypal}}</span>
-            </p>
-          </div>
-          <div class="payment-choice">
-            <img src="/table/public/cash1.png" alt>
-            <p>
-              <input type="radio" value="cash" name="paymentMethod" v-model="paymentMethod">
-              <span>{{app_conf.DiveIn}}</span>
-            </p>
-          </div>
-        </div>
       </div>
     </section>
     <!-- payment methdo seciton end -->
-    <!-- payment detail section -->
+    <!-- QR Code Section -->
     <section>
-      <h6>{{app_conf.payment_detail_title}}</h6>
-      <div class="payment-detail-container">
-        <div>
-          <span>{{app_conf.price}}</span>
-          <span class="number">{{app_conf.currency}} ${{totalPriceOfOrder}}</span>
-        </div>
-        <!-- <div v-if="isEN">
-                    <span>GST</span>
-                    <span class="number">AUD $0.00</span>
-        </div>-->
-        <!-- <div v-if="!isEN">
-                    <span>人民币</span>
-                    <span class="number">CNY ¥{{totalPriceOfOrder * 5}}</span>
-        </div>-->
-        <div class="bold">
-          <span>{{app_conf.total}}</span>
-          <span class="number">{{app_conf.currency}} ${{totalPriceOfOrder}}</span>
-        </div>
-      </div>
+      <vue-qr
+        v-if="app_conf.QrCodeImage"
+        :logoSrc="app_conf.QrImageUrl"
+        :text="QrValue"
+        :margin="0"
+        class="qrcode"
+        :size="200"
+      ></vue-qr>
+      <vue-qr v-if="!app_conf.QrCodeImage" :text="QrValue" :margin="0" class="qrcode" :size="200"></vue-qr>
     </section>
-    <!-- payment detail section end -->
+    <!-- QR Code Section End -->
     <!-- order section -->
     <section>
       <h6>
@@ -100,38 +67,21 @@
       </div>
     </section>
     <!-- order section end -->
-    <!-- QR Code Section -->
-    <!-- <section>
-            <qrcode-vue :value="QrValue" class="qrcode"></qrcode-vue>
-    </section>-->
+    <!-- payment detail section -->
     <section>
-      <vue-qr :logoSrc="`${imgURL}logo.png`" :text="QrValue" :margin="0" class="qrcode" :size="200"></vue-qr>
-    </section>
-    <!-- QR Code Section End -->
-    <!-- payment footer -->
-    <div class="footer">
-      <div class="footer-content-container">
-        <div class="footer-title">
-          <h2>{{app_conf.total}}</h2>
-          <div class="footer-detail-info">
-            <span>{{app_conf.app_header_title}} {{table_number}}</span>
-            <span>{{app_conf.order}} {{orderId}}</span>
-          </div>
+      <h6>{{app_conf.payment_detail_title}}</h6>
+      <div class="payment-detail-container">
+        <div>
+          <span>{{app_conf.price}}</span>
+          <span class="number">{{app_conf.currency}} ${{totalPriceOfOrder}}</span>
         </div>
-        <div class="footer-detail">
-          <div class="footer-detail-total">
-            <span>{{app_conf.currency}} ${{totalPriceOfOrder}}</span>
-          </div>
-        </div>
-        <div @click="confirm" class="footer-button">
-          <div class="animated infinite pulse vertical-center">
-            <i class="material-icons">attach_money</i>
-          </div>
+        <div class="bold">
+          <span>{{app_conf.total}}</span>
+          <span class="number">{{app_conf.currency}} ${{totalPriceOfOrder}}</span>
         </div>
       </div>
-    </div>
-
-    <!-- payment footer end -->
+    </section>
+    <!-- payment detail section end -->
   </div>
 </template>
 
@@ -153,20 +103,30 @@ export default {
     /**qrcode order command: barcode 1, qty1, sizeLevel 1;barcode2, qty2,sizeLevel2
      * example: 106,2.5,0
      */
-    this.delay(1000).then(res => {
-      this.updateOrderList();
+    this.delay(800).then(res => {
+      let newList = [];
+      if (localStorage.getItem("preorderList")) {
+        newList = localStorage.getItem("preorderList");
+        this.replaceList(newList);
+      }
     });
-
-    this.delay(2000).then(res => {
-      let qr = "";
-      this.orderList.forEach(el => {
-        qr = qr + el.item.upc + ",";
-        qr = qr + el.quantity + ",";
-        qr = qr + "0" + ";";
+    let qr = "";
+    if (this.orderList === null || this.orderList.length === 0) {
+      return;
+    }
+    this.orderList.forEach(el => {
+      qr = qr + el.item.upc + ",";
+      qr = qr + el.quantity + ",";
+      el.item.choices.forEach(choice => {
+        qr = qr + choice.type + "," + choice.pickedChoice + ",";
       });
-
-      this.QrValue = qr.substr(0, qr.length - 1);
+      el.item.options.forEach(option => {
+        qr = qr + option.option_name + "," + option.pickedOption + ",";
+      });
+      qr = qr + "0" + ";";
     });
+
+    this.QrValue = qr.substr(0, qr.length - 1);
   },
   computed: {
     ...mapGetters([
@@ -189,48 +149,7 @@ export default {
   methods: {
     ...mapActions(["setSpinnerStatus", "replaceList", "setIsConfirmed"]),
     back() {
-      this.$router.push(this.pathFrom);
-    },
-    confirm() {
-      if (this.paymentMethod === "cash") {
-        axios
-          .post("/table/public/api/confirm", {
-            orderList: this.orderList,
-            order_id: this.orderId,
-            store_id: this.store_id,
-            store_name: this.store_name,
-            store_url: this.store_url,
-            total: this.totalPriceOfOrder,
-            paymentMethod: this.paymentMethod,
-            v: this.v
-          })
-          .then(res => {
-            this.$router.push(
-              `/table/public/table/${this.table_number}/orderid/${
-                this.orderId
-              }/confirm?cdt=${this.cdt}&v=${this.v}`
-            );
-          });
-      }
-    },
-    updateOrderList() {
-      this.setSpinnerStatus(true);
-      axios
-        .post("/table/public/api/initcart", {
-          order_id: this.orderId,
-          cdt: this.cdt,
-          v: this.v,
-          table_id: this.table_number,
-          lang: this.lang,
-          preorder: this.app_conf.preorder
-        })
-        .then(res => {
-          this.replaceList(res.data);
-          this.setSpinnerStatus(false);
-        })
-        .catch(err => {
-          this.$router.push("/table/public/menu");
-        });
+      this.$router.push("/table/public/preorder");
     },
     delay(time) {
       return new Promise(resolve => {

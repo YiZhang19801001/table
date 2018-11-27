@@ -1,25 +1,22 @@
 <template>
-    <div class="confirm-vue">
-        <h3>Your Order Is Submitted!</h3>
-        <div class="icon-wrapper">
-            <i @click="close()" class="material-icons">
-                done_outline
-            </i>
-        </div>
-        <ul>
-            <div class="order-list">
-                <!-- add a history ordered items list 😓 -->
-                <li v-for="(orderItem) in historyOrderList" :key="orderItem.order_item_id">
-                    <OrderedCartItem :orderItem="orderItem"></OrderedCartItem>
-                </li>
-                <!-- just a list of order item 😃 -->
-                <li v-for="(orderItem) in orderList" :key="orderItem.order_item_id">
-                    <CartItem :orderItem="orderItem"></CartItem>
-                </li>
-            </div>
-        </ul>
+  <div class="confirm-vue">
+    <h3>Your Order Is Submitted!</h3>
+    <div class="icon-wrapper">
+      <i @click="close()" class="material-icons">done_outline</i>
     </div>
-
+    <ul>
+      <div class="order-list">
+        <!-- add a history ordered items list 😓 -->
+        <li v-for="(orderItem) in historyOrderList" :key="orderItem.order_item_id">
+          <OrderedCartItem :orderItem="orderItem"></OrderedCartItem>
+        </li>
+        <!-- just a list of order item 😃 -->
+        <li v-for="(orderItem) in orderList" :key="orderItem.order_item_id">
+          <CartItem :orderItem="orderItem"></CartItem>
+        </li>
+      </div>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -65,7 +62,8 @@ export default {
           cdt: this.cdt,
           v: this.v,
           table_id: this.table_number,
-          lang: this.lang
+          lang: this.lang,
+          preorder: this.app_conf.preorder
         })
         .then(res => {
           this.replaceList(res.data);

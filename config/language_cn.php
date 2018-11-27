@@ -30,6 +30,10 @@ return [
 //shopping cart confirm order button text
 'confirm_order'=>"确认下单",
 // orderedLabel - show on shopping list for the items already confirmed
-'order_label'=>"已下单"
+'order_label'=>"已下单",
+// pre-order mode on display title
+'preorder_title'=>"预点单",
+// pre-order confirm page title text
+'preorder_confirm_text'=>'预点单已保存'
 
 ];

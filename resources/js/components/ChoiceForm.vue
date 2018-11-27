@@ -1,48 +1,54 @@
 <template>
+  <form
+    class="choice-form animated zoomInDown"
+    id="choiceForm"
+    @submit.prevent="addToOrder()"
+    key="animation-form"
+  >
+    <!-- header -->
+    <div class="choice-form-title">
+      {{app_conf.choice_form_title}}
+      <p @click="closeForm">
+        <i class="material-icons">close</i>
+      </p>
+    </div>
+    <!-- header end -->
+    <!-- choice & option summary -->
+    <div v-if="pickedChoices.length > 0 || pickedOptions.length >0" class="summary">
+      <div v-for="(choice_type,index) in item.choices" class="choice-summary" :key="index">
+        <span class="summary-title">{{choice_type.type}} :</span>
+        <span>{{this.pickedChoices[index]}}</span>
+      </div>
+      <div v-for="(option,index2) in item.options" class="choice-summary" :key="index2">
+        <span class="summary-title">{{option.option_name}} :</span>
+        <span class="summary-value">{{this.pickedOptions[index2]}}</span>
+      </div>
+    </div>
+    <!-- choice & option summary end-->
+    <div class="detail-contianer">
+      <!-- product_ext -->
+      <div v-for="(choice_type, index) in item.choices" class="choice-group" :key="`ext${index}`">
+        <h4>{{choice_type.type}}</h4>
+        <Choice :choice_type="choice_type" :index="index" @pickValue="addChoice"></Choice>
+      </div>
+      <!-- product_ext end -->
+      <!-- option  -->
+      <div v-for="(option, index2) in item.options" class="choice-group" :key="`opt${index2}`">
+        <h4>{{option.option_name}}</h4>
+        <Option :option="option" :index="index2" @pickValue="addOption"></Option>
+      </div>
+      <!-- option end -->
+    </div>
 
-
-            <form class="choice-form animated zoomInDown" id="choiceForm"  @submit.prevent="addToOrder()" key="animation-form">
-                <!-- header -->
-                <div class="choice-form-title">{{app_conf.choice_form_title}}<p @click="closeForm"><i class="material-icons">close</i></p></div>
-                <!-- header end -->
-
-                <!-- choice & option summary -->
-                <div v-if="pickedChoices.length > 0 || pickedOptions.length >0" class="summary">
-                    <div v-for="(choice_type,index) in item.choices" class="choice-summary" :key="index">
-                        <span class="summary-title">{{choice_type.type}} : </span>
-                        <span>{{this.pickedChoices[index]}}</span>
-                    </div>
-                    <div v-for="(option,index2) in item.options" class="choice-summary" :key="index2">
-                        <span class="summary-title">{{option.option_name}} : </span> <span class="summary-value">{{this.pickedOptions[index2]}}</span>
-                    </div>
-                </div>
-                <!-- choice & option summary end-->
-
-                <div class="detail-contianer">
-                    <!-- product_ext -->
-                    <div v-for="(choice_type, index) in item.choices" class="choice-group" :key="`ext${index}`">
-                        <h4>{{choice_type.type}}</h4>
-                        <Choice :choice_type="choice_type" :index="index" @pickValue="addChoice"></Choice>
-                    </div>
-                    <!-- product_ext end -->
-
-                    <!-- option  -->
-                    <div v-for="(option, index2) in item.options" class="choice-group" :key="`opt${index2}`">
-                        <h4>{{option.option_name}}</h4>
-                        <Option :option="option" :index="index2" @pickValue="addOption"></Option>
-                    </div>
-                    <!-- option end -->
-                </div>
-
-                <!-- confirm button -->
-                <div class="form_button_container">
-                    <button class="addButton" type="submit">
-                        <i class="material-icons">add_shopping_cart</i> {{app_conf.choice_form_button}}
-                    </button>
-                </div>
-                <!-- confirm button end -->
-            </form>
-
+    <!-- confirm button -->
+    <div class="form_button_container">
+      <button class="addButton" type="submit">
+        <i class="material-icons">add_shopping_cart</i>
+        {{app_conf.choice_form_button}}
+      </button>
+    </div>
+    <!-- confirm button end -->
+  </form>
 </template>
 
 <script>

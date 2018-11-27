@@ -30,5 +30,9 @@ return [
 //shopping cart confirm order button text
 'confirm_order'=>"Confirm Order",
 // orderedLabel - show on shopping list for the items already confirmed
-'order_label'=>"ordered"
+'order_label'=>"ordered",
+// preorder mode title
+'preorder_title'=>'pre-order',
+// preorder confirm page header text
+'preorder_confirm_text'=>'your order saved'
 ];

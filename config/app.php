@@ -3,14 +3,16 @@
 return [
 
 /** CUSTOM SETTING */
-    //language id ['1'=>en, '2'=>cn]
-    // 'lang' => '1',
-    //display mode
-    //[
-    //    'true'=>'order product with options if there is some options to choose',
-    //    'false'=>'order product without options'
-    //]
+    // show details or not
     'show_options'=>true,
+
+    // preoder mode switch [false: preorder mode off, true: preorder mode on]
+    'perorder'=>true,
+
+    // Qr code has / hasn't small icon image in the middle [if choose true, 'QrImageUrl' must have valid value]
+    'QrCodeImage'=>true,
+    'QrImageUrl'=>"/table/public/images/logo.png",
+
 /** End */
     /*
     |--------------------------------------------------------------------------

@@ -1,13 +1,22 @@
 <template>
-<div class="header">
+  <div class="header">
+    <h2>{{app_conf.preorder? app_conf.preorder_title:app_conf.app_header_title + table_number}}</h2>
+
     <div class="languageSwitchButtonGroup">
-    <span class="button-wrapper">
-                <span @click="setToCN" class="languageButton" :class="{languageButtonInactive:lang!=1}">{{app_conf.lang_switch_cn}}</span>
-                <span @click="setToEN" class="languageButton" :class="{languageButtonInactive:lang==1}">{{app_conf.lang_switch_en}}</span>
-    </span>
+      <span class="button-wrapper">
+        <span
+          @click="setToCN"
+          class="languageButton"
+          :class="{languageButtonInactive:lang!=1}"
+        >{{app_conf.lang_switch_cn}}</span>
+        <span
+          @click="setToEN"
+          class="languageButton"
+          :class="{languageButtonInactive:lang==1}"
+        >{{app_conf.lang_switch_en}}</span>
+      </span>
     </div>
-    <h2>{{app_conf.app_header_title}} {{table_number}}</h2>
-</div>
+  </div>
 </template>
 
 <script>
@@ -46,10 +55,11 @@ export default {
 h2 {
   position: absolute;
   top: 10px;
-  left: 38%;
+  left: 34%;
   text-align: center;
   font-weight: bold;
   text-shadow: 2px 2px 6px #000;
+  margin: auto;
 }
 /*language switch button :yin_yang:*/
 .languageSwitchButtonGroup {

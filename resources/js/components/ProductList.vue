@@ -1,77 +1,88 @@
 <template>
-    <div class="productList"  v-scroll-spy ref="listView">
-
-      <!-- List:: show groups for products -->
-        <div v-for="(product,index) in productList" :key="index" ref="cates">
-            <!-- category title for separating different group of products -->
-            <h4 :id="product.categorys.category_id">{{product.categorys.name}}</h4>
-            <!-- List:: show products in certain group -->
-            <div v-for="item in product.products" :key="item.product_id" class="product"
-            v-bind:class="{activeProduct:item.product_id===selectProduct_id}">
-            <span
-            class="orderQty"
-            :class="[
+  <div class="productList" v-scroll-spy ref="listView">
+    <!-- List:: show groups for products -->
+    <div v-for="(product,index) in productList" :key="index" ref="cates">
+      <!-- category title for separating different group of products -->
+      <h4 :id="product.categorys.category_id">{{product.categorys.name}}</h4>
+      <!-- List:: show products in certain group -->
+      <div
+        v-for="item in product.products"
+        :key="item.product_id"
+        class="product"
+        v-bind:class="{activeProduct:item.product_id===selectProduct_id}"
+      >
+        <span
+          class="orderQty"
+          :class="[
             {activeOrderQty:item.product_id===selectProduct_id},
             {unactiveOrderQty:item.product_id!==selectProduct_id}
             ]"
-            v-if="getOrderQty(item.product_id)!==0">{{getOrderQty(item.product_id)}}</span>
-            <!-- static info show for each product -->
-            <!-- product cover -->
-<!-- <transition>
+          v-if="getOrderQty(item.product_id)!==0"
+        >{{getOrderQty(item.product_id)}}</span>
+        <!-- static info show for each product -->
+        <!-- product cover -->
+        <!-- <transition>
                 <div v-if="item.product_id===selectProduct_id" class="product-background"></div>
 
 
-</transition> -->
-    <!-- product footer cover  -->
-<div v-if="item.product_id===selectProduct_id" class="product-background-footer"></div>
-<transition>
-                    <img
-                    src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                    alt=""
-                    v-bind:class="{activeimg:item.product_id===selectProduct_id}">
-
-</transition>
-                <div class="text-container"   @click="selectItem(item.product_id)" :class="{activeTextContainer:item.product_id===selectProduct_id}">
-
-                    <h5 v-bind:class="{activeH5:item.product_id===selectProduct_id}">{{item.name}}</h5>
-                    <div v-if="item.product_id===selectProduct_id" class="product-description">{{item.description}}</div>
-                    <div class="price" :class="{activePrice:item.product_id===selectProduct_id}"><p>${{item.price}}</p></div>
-                </div>
-                <!-- button to control folder or expand each product -->
-                <transition>
-                <button class="button"
-                v-if="table_number"
-                v-bind:class="{active:item.product_id===selectProduct_id,unactive:item.product_id!==selectProduct_id}"
-                @click="wandOrder(item)">
-                    <i class="material-icons">
-                       add
-                    </i>
-                </button></transition>
-                <!-- button to add new product to cart -->
-
-                <button class="button active close-button"
-                @click="selectItem(item.product_id)"
-                v-if="item.product_id===selectProduct_id"
-                >
-                    <i class="material-icons">
-                        close
-                    </i>
-                </button>
-
-                <!-- popup pannel for taste choices & options-->
-
-                <div v-if="wantOrder==true && item.product_id===selectProduct_id" class="cover"></div>
-
-
-                    <template v-if="wantOrder==true && item.product_id===selectProduct_id">
-
-                        <ChoiceForm key="mykey" v-bind:item="item" @addToOrder="addToOrder" @closeChoiceForm="closeChoiceForm" ></ChoiceForm>
-                    </template>
-
-            </div>
+        </transition>-->
+        <!-- product footer cover  -->
+        <div v-if="item.product_id===selectProduct_id" class="product-background-footer"></div>
+        <transition>
+          <img
+            src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt
+            v-bind:class="{activeimg:item.product_id===selectProduct_id}"
+          >
+        </transition>
+        <div
+          class="text-container"
+          @click="selectItem(item.product_id)"
+          :class="{activeTextContainer:item.product_id===selectProduct_id}"
+        >
+          <h5 v-bind:class="{activeH5:item.product_id===selectProduct_id}">{{item.name}}</h5>
+          <div
+            v-if="item.product_id===selectProduct_id"
+            class="product-description"
+          >{{item.description}}</div>
+          <div class="price" :class="{activePrice:item.product_id===selectProduct_id}">
+            <p>${{item.price}}</p>
+          </div>
         </div>
-    </div>
+        <!-- button to control folder or expand each product -->
+        <transition>
+          <button
+            class="button"
+            v-if="table_number || app_conf.preorder"
+            v-bind:class="{active:item.product_id===selectProduct_id,unactive:item.product_id!==selectProduct_id}"
+            @click="wandOrder(item)"
+          >
+            <i class="material-icons">add</i>
+          </button>
+        </transition>
+        <!-- button to add new product to cart -->
+        <button
+          class="button active close-button"
+          @click="selectItem(item.product_id)"
+          v-if="item.product_id===selectProduct_id"
+        >
+          <i class="material-icons">close</i>
+        </button>
 
+        <!-- popup pannel for taste choices & options-->
+        <div v-if="wantOrder==true && item.product_id===selectProduct_id" class="cover"></div>
+
+        <template v-if="wantOrder==true && item.product_id===selectProduct_id">
+          <ChoiceForm
+            key="mykey"
+            v-bind:item="item"
+            @addToOrder="addToOrder"
+            @closeChoiceForm="closeChoiceForm"
+          ></ChoiceForm>
+        </template>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -170,6 +181,7 @@ export default {
        * [{item:{},quantity:number}]*/
 
       this.wantOrder = false;
+      console.log(newItem);
       this.addNewItemToOrderList(newItem);
       this.selectProduct_id = 0;
     },
@@ -189,6 +201,9 @@ export default {
     },
     getOrderQty(id) {
       let qty = 0;
+      if (this.orderList === null || this.orderList.length === 0) {
+        return 0;
+      }
       this.orderList.forEach(el => {
         if (el.item.product_id === id) {
           qty += el.quantity;

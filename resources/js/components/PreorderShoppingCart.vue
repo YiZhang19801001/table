@@ -18,13 +18,9 @@
       </div>
       <!-- toggle the list of order on clicking the header -->
       <ul v-if="isExpand">
-        <!-- add a history ordered items list 😓 -->
-        <li v-for="(orderItem) in historyOrderList" :key="orderItem.order_item_id">
-          <OrderedCartItem :orderItem="orderItem"></OrderedCartItem>
-        </li>
         <!-- just a list of order item 😃 -->
-        <li v-for="(orderItem) in orderList" :key="orderItem.order_item_id">
-          <CartItem :orderItem="orderItem"></CartItem>
+        <li v-for="(orderItem,index) in orderList" :key="index">
+          <CartItem :index="index" :orderItem="orderItem"></CartItem>
         </li>
       </ul>
       <!-- confirm order -->
@@ -41,6 +37,7 @@
 import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 import CartItem from "./CartItem.vue";
 import OrderedCartItem from "./OrderedCartItem";
+import simpleStorage from "simplestorage.js";
 
 export default {
   name: "app-shopping-cart",
@@ -55,31 +52,20 @@ export default {
   },
   computed: {
     ...mapGetters([
-      "orderList",
-      "historyOrderList",
+      "localOrderList",
       "totalPriceOfOrder",
       "totalQuantityOfOrder",
-      "orderId",
-      "table_number",
-      "isEN",
-      "cdt",
-      "v",
+      "orderList",
       "app_conf",
       "lang"
     ])
   },
   mounted() {
-    this.delay(1000).then(res => {
-      if (!this.app_conf.preorder) {
-        this.updateOrderList();
-      } else {
-        const newList = localStorage.getItem("preorderList");
+    this.delay(800).then(res => {
+      let newList = [];
+      if (localStorage.getItem("preorderList")) {
+        newList = localStorage.getItem("preorderList");
         this.replaceList(newList);
-      }
-    });
-    Echo.channel("tableOrder").listen("newOrderItemAdded", e => {
-      if (this.orderId === e.orderId) {
-        this.updateOrderList();
       }
     });
   },
@@ -105,34 +91,7 @@ export default {
     },
     //ToDo:: save data in database.
     confirmOrder() {
-      if (this.app_conf.preorder) {
-        this.$router.push(`/table/public/confirm`);
-      } else {
-        this.$router.push(
-          `/table/public/table/${this.table_number}/orderid/${
-            this.orderId
-          }/payment?cdt=${this.cdt}&v=${this.v}`
-        );
-      }
-    },
-    updateOrderList() {
-      this.setSpinnerStatus(true);
-      axios
-        .post("/table/public/api/initcart", {
-          order_id: this.orderId,
-          cdt: this.cdt,
-          v: this.v,
-          table_id: this.table_number,
-          lang: this.lang,
-          preorder: this.app_conf.preorder
-        })
-        .then(res => {
-          this.replaceList(res.data);
-          this.setSpinnerStatus(false);
-        })
-        .catch(err => {
-          this.$router.push("/table/public/menu");
-        });
+      this.$router.push(`/table/public/confirm`);
     },
     delay(time) {
       return new Promise(resolve => {
