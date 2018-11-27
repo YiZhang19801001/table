@@ -44,6 +44,8 @@ export default {
 <style lang="scss" scoped>
 .header {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 8%;
   background-color: rgb(235, 77, 75);
@@ -53,9 +55,6 @@ export default {
   z-index: 200;
 }
 h2 {
-  position: absolute;
-  top: 10px;
-  left: 34%;
   text-align: center;
   font-weight: bold;
   text-shadow: 2px 2px 6px #000;
@@ -63,9 +62,7 @@ h2 {
 }
 /*language switch button :yin_yang:*/
 .languageSwitchButtonGroup {
-  text-align: right;
-  padding-right: 20px;
-  margin-top: 4px;
+  background-color: #ffc24a;
   .button-wrapper {
     box-shadow: 0px 0px 2px black;
   }
