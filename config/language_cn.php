@@ -2,7 +2,7 @@
 
 return [
 /** txt of language switch button */
-'lang_switch_en'=>'英',
+'lang_switch_en'=>'EN',
 'lang_switch_cn'=>'中',
  /** display before the price number to indicate what currency is used in this store */
  'currency'=>'澳币',

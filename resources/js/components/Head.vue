@@ -1,15 +1,19 @@
 <template>
   <div class="header">
-    <h2>{{app_conf.preorder? app_conf.preorder_title:app_conf.app_header_title + table_number}}</h2>
+    <div class="wrapper">
+      <h2>{{app_conf.preorder? app_conf.preorder_title:app_conf.app_header_title + table_number}}</h2>
+    </div>
 
     <div class="languageSwitchButtonGroup">
       <span class="button-wrapper">
         <span
+          v-if="lang==1"
           @click="setToCN"
           class="languageButton"
           :class="{languageButtonInactive:lang!=1}"
         >{{app_conf.lang_switch_cn}}</span>
         <span
+          v-if="lang==2"
           @click="setToEN"
           class="languageButton"
           :class="{languageButtonInactive:lang==1}"
@@ -46,31 +50,42 @@ export default {
   position: fixed;
   width: 100%;
   height: 8%;
+  display: flex;
+  justify-content: space-between;
   background-color: rgb(235, 77, 75);
   color: #f8fafc;
   //   padding: 6px;
   box-shadow: 0px 5px 5px #00000038;
   z-index: 200;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 6;
+}
 h2 {
-  position: absolute;
-  top: 10px;
-  left: 34%;
   text-align: center;
   font-weight: bold;
   text-shadow: 2px 2px 6px #000;
-  margin: auto;
 }
 /*language switch button :yin_yang:*/
 .languageSwitchButtonGroup {
   text-align: right;
-  padding-right: 20px;
-  margin-top: 4px;
+  background-color: #ffc24a;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
   .button-wrapper {
-    box-shadow: 0px 0px 2px black;
+    text-align: center;
+    font-size: 22px;
   }
   .languageButton {
-    padding: 3px;
+    color: white;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px black;
     &.languageButtonInactive {
       background-color: #933b38;
       padding: 0px 5px;

@@ -60,8 +60,13 @@ export default {
     this.delay(1000).then(res => {
       if (this.app_conf.preorder && !localStorage.getItem("preorderList")) {
         this.$router.push(`/table/public/preorder`);
-      } else if (this.app_conf.preorder) {
+      } else if (
+        this.app_conf.preorder &&
+        this.$route.path === "/table/public/"
+      ) {
         this.$router.push(`/table/public/confirm`);
+      } else if (this.app_conf.preorder) {
+        this.$router.push(`/table/public/preorder`);
       }
     });
   },
