@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Product_description;
 use App\Product_to_category;
 use App\Category_description;
