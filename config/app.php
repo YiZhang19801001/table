@@ -7,7 +7,7 @@ return [
     'show_options'=>true,
 
     // preoder mode switch [false: preorder mode off, true: preorder mode on]
-    'perorder'=>true,
+    'perorder'=>false,
 
     // Qr code has / hasn't small icon image in the middle [if choose true, 'QrImageUrl' must have valid value]
     'QrCodeImage'=>true,

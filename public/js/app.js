@@ -68964,7 +68964,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["historyOrderList", "orderList", "isConfirmed", "orderId", "cdt", "v", "lang", "table_number", "pathFrom"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["historyOrderList", "orderList", "isConfirmed", "orderId", "cdt", "v", "lang", "table_number", "pathFrom", "app_conf"])),
   mounted: function mounted() {
     var _this = this;
 
