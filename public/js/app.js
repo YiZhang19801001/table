@@ -68514,9 +68514,17 @@ if(false) {
 
 /***/ }),
 /* 114 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: \r\n.languageSwitchButtonGroup {\r\n                           ^\r\n      Invalid CSS after \"...chButtonGroup {\": expected \"}\", was \"<<<<<<< HEAD\"\r\n      in D:\\xampp\\htdocs\\table\\resources\\js\\components\\Head.vue (line 75, column 29)");
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.header[data-v-611e54cb] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  height: 8%;\n  display: flex;\n  justify-content: space-between;\n  background-color: #eb4d4b;\n  color: #f8fafc;\n  -webkit-box-shadow: 0px 5px 5px #00000038;\n          box-shadow: 0px 5px 5px #00000038;\n  z-index: 200;\n}\n.wrapper[data-v-611e54cb] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-flex: 6;\n      -ms-flex: 6;\n          flex: 6;\n}\nh2[data-v-611e54cb] {\n  text-align: center;\n  font-weight: bold;\n  text-shadow: 2px 2px 6px #000;\n}\n\n/*language switch button :yin_yang:*/\n.languageSwitchButtonGroup[data-v-611e54cb] {\n  text-align: right;\n  background-color: #ffc24a;\n  color: black;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.languageSwitchButtonGroup .button-wrapper[data-v-611e54cb] {\n    text-align: center;\n    font-size: 22px;\n}\n.languageSwitchButtonGroup .languageButton[data-v-611e54cb] {\n    color: white;\n    font-weight: 500;\n    text-shadow: 1px 1px 3px black;\n}\n.languageSwitchButtonGroup .languageButton.languageButtonInactive[data-v-611e54cb] {\n      background-color: #933b38;\n      padding: 0px 5px;\n      -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5);\n              box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5);\n}\n", ""]);
+
+// exports
+
 
 /***/ }),
 /* 115 */
