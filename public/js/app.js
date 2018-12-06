@@ -71833,51 +71833,49 @@ TWEEN.Interpolation = {
         AddNewItemToOrderList: function AddNewItemToOrderList(state, payload) {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
-            var flag = true;
 
-            console.log(payload);
+            console.log("payload", payload);
+            console.log("state app_conf", state.app_conf);
             if (state.app_conf.preorder) {
+                var flag = false;
                 for (var i = 0; i < state.orderList.length; i++) {
-                    if (state.orderList[i].item.product_id !== payload.product_id) {
-                        flag = false;
+                    if (state.orderList[i].item.product_id === payload.product_id) {
+                        flag = true;
+                        if (state.orderList[i].item.options.length > 0) {
+                            for (var a = 0; a < state.orderList[i].item.options.length; a++) {
+                                var option = state.orderList[i].item.options[a];
+                                var new_option = payload.options[a];
+                                if (option.pickedOption !== new_option) {
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                        }
 
-                        break;
-                    }
-
-                    if (state.orderList[i].item.options.length > 0) {
-                        for (var a = 0; a < state.orderList[i].item.options.length; a++) {
-                            var option = state.orderList[i].item.options[a];
-                            var new_option = payload.options[a];
-                            if (option.pickedOption !== new_option) {
-                                flag = false;
-
-                                break;
+                        if (flag === false || state.orderList[i].item.choices.length < 1) {
+                            break;
+                        } else {
+                            for (var b = 0; b < state.orderList[i].item.choices.length; b++) {
+                                var choice = state.orderList[i].item.choices[b];
+                                var new_choice = payload.choices[b];
+                                if (choice.pickedChoice !== new_choice.pickedChoice) {
+                                    flag = false;
+                                    break;
+                                }
                             }
                         }
                     }
-
-                    if (flag === false || state.orderList[i].item.choices < 1) {
-                        break;
-                    } else {
-                        for (var b = 0; b < state.orderList[i].item.choices.length; b++) {
-                            var choice = state.orderList[i].item.choices[b];
-                            var new_choice = payload.choices[b];
-                            if (choice.pickedChoice !== new_choice.pickedChoice) {
-                                flag = false;
-
-                                break;
-                            }
-                        }
-                    }
-
                     if (flag) {
                         state.orderList[i].quantity++;
                     }
                 }
                 // if product_id not exist add new
                 if (!flag) {
+                    console.log("worked");
                     state.orderList.push({ item: payload, quantity: 1 });
                 }
+
+                console.log("state orderList", state.orderList);
                 localStorage.setItem("preorderList", JSON.stringify(state.orderList));
             } else {
                 axios.post("/table/public/api/orderitem", {
