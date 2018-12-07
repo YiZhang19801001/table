@@ -62718,11 +62718,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     });
 
     this.delay(2000).then(function (res) {
-      var qr = "";
+      var qr = "=QROD=";
       _this.orderList.forEach(function (el) {
         qr = qr + el.item.upc + ",";
         qr = qr + el.quantity + ",";
         qr = qr + "0" + ";";
+        el.item.choices.forEach(function (choice) {
+          qr = qr + choice.barcode + "," + ele.quantity + "," + 0 + ";";
+        });
+        el.item.options.forEach(function (option) {
+          qr = qr + option.option_name + "," + option.pickedOption + ",";
+        });
+        //qr = qr + "0" + ";";
       });
 
       _this.QrValue = qr.substr(0, qr.length - 1);
@@ -66698,7 +66705,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
        * [{item:{},quantity:number}]*/
 
       this.wantOrder = false;
-      console.log(newItem);
+
       this.addNewItemToOrderList(newItem);
       this.selectProduct_id = 0;
     },
@@ -66923,11 +66930,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         ele.pickedChoice = _this.pickedChoices[index].value;
         ele.product_ext_id = _this.pickedChoices[index].product_ext_id;
         ele.price = _this.pickedChoices[index].price;
+        ele.barcode = _this.pickedChoices[index].barcode;
       });
       newItem.options.forEach(function (ele, index) {
         ele.pickedOption = _this.pickedOptions[index].value;
         ele.product_option_value_id = _this.pickedOptions[index].product_option_value_id;
         ele.price = _this.pickedOptions[index].price;
+        ele.barcode = _this.pickedOptions[index].barcode;
       });
       this.pickedChoices = [];
       this.pickedOptions = [];
@@ -67121,13 +67130,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       var id = 0;
       var choice_price = 0;
+      var barcode = "";
       this.choice_type.choices.forEach(function (ele) {
         if (ele.name === _this.pickedChoice) {
           id = ele.product_ext_id;
           choice_price = ele.price;
+          barcode = ele.barcode;
         }
       });
-      this.$emit("pickValue", { value: this.pickedChoice, product_ext_id: id, price: choice_price }, this.index);
+      this.$emit("pickValue", {
+        value: this.pickedChoice,
+        product_ext_id: id,
+        price: choice_price,
+        barcode: barcode
+      }, this.index);
     }
   }
 });
@@ -69284,20 +69300,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this.replaceList(newList);
       }
     });
-    var qr = "";
+    var qr = "=QROD=";
     if (this.orderList === null || this.orderList.length === 0) {
       return;
     }
     this.orderList.forEach(function (el) {
       qr = qr + el.item.upc + ",";
       qr = qr + el.quantity + ",";
+      qr = qr + "0" + ";";
       el.item.choices.forEach(function (choice) {
-        qr = qr + choice.type + "," + choice.pickedChoice + ",";
+        qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
       });
       el.item.options.forEach(function (option) {
         qr = qr + option.option_name + "," + option.pickedOption + ",";
       });
-      qr = qr + "0" + ";";
+      //qr = qr + "0" + ";";
     });
 
     this.QrValue = qr.substr(0, qr.length - 1);
@@ -71794,8 +71811,6 @@ TWEEN.Interpolation = {
             axios.get("/table/public/api/init/" + state.lang).then(function (res) {
                 state.app_conf = res.data.app_conf;
                 state.lang = res.data.app_conf.lang;
-                console.log("res lang:", res.data.app_conf.lang);
-                console.log("state lang:", state.lang);
             });
         },
         updateIsEN: function updateIsEN(state, payload) {
@@ -71857,6 +71872,7 @@ TWEEN.Interpolation = {
                     }
                     if (flag) {
                         state.orderList[i].quantity++;
+                        break;
                     }
                 }
                 // if product_id not exist add new

@@ -110,20 +110,21 @@ export default {
         this.replaceList(newList);
       }
     });
-    let qr = "";
+    let qr = "=QROD=";
     if (this.orderList === null || this.orderList.length === 0) {
       return;
     }
     this.orderList.forEach(el => {
       qr = qr + el.item.upc + ",";
       qr = qr + el.quantity + ",";
+      qr = qr + "0" + ";";
       el.item.choices.forEach(choice => {
-        qr = qr + choice.type + "," + choice.pickedChoice + ",";
+        qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
       });
       el.item.options.forEach(option => {
         qr = qr + option.option_name + "," + option.pickedOption + ",";
       });
-      qr = qr + "0" + ";";
+      //qr = qr + "0" + ";";
     });
 
     this.QrValue = qr.substr(0, qr.length - 1);

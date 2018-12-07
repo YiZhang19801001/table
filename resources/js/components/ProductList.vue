@@ -181,7 +181,7 @@ export default {
        * [{item:{},quantity:number}]*/
 
       this.wantOrder = false;
-      console.log(newItem);
+
       this.addNewItemToOrderList(newItem);
       this.selectProduct_id = 0;
     },

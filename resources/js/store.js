@@ -120,8 +120,6 @@ export default {
             axios.get("/table/public/api/init/" + state.lang).then(res => {
                 state.app_conf = res.data.app_conf;
                 state.lang = res.data.app_conf.lang;
-                console.log("res lang:", res.data.app_conf.lang);
-                console.log("state lang:", state.lang);
             });
         },
         updateIsEN(state, payload) {
@@ -202,6 +200,7 @@ export default {
                     }
                     if (flag) {
                         state.orderList[i].quantity++;
+                        break;
                     }
                 }
                 // if product_id not exist add new
