@@ -51,9 +51,6 @@ export default {
     this.setV(this.$route.query.v);
     if (localStorage.language_id) {
       this.setLang(localStorage.language_id);
-    } else {
-      localStorage.language_id = 1;
-      this.setLang(1);
     }
     this.setAppConfig();
 

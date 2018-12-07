@@ -68604,11 +68604,7 @@ var render = function() {
         _vm.lang == 1
           ? _c(
               "span",
-              {
-                staticClass: "languageButton",
-                class: { languageButtonInactive: _vm.lang != 1 },
-                on: { click: _vm.setToCN }
-              },
+              { staticClass: "languageButton", on: { click: _vm.setToCN } },
               [_vm._v(_vm._s(_vm.app_conf.lang_switch_cn))]
             )
           : _vm._e(),
@@ -68616,11 +68612,7 @@ var render = function() {
         _vm.lang == 2
           ? _c(
               "span",
-              {
-                staticClass: "languageButton",
-                class: { languageButtonInactive: _vm.lang == 1 },
-                on: { click: _vm.setToEN }
-              },
+              { staticClass: "languageButton", on: { click: _vm.setToEN } },
               [_vm._v(_vm._s(_vm.app_conf.lang_switch_en))]
             )
           : _vm._e()
@@ -70128,9 +70120,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     this.setV(this.$route.query.v);
     if (localStorage.language_id) {
       this.setLang(localStorage.language_id);
-    } else {
-      localStorage.language_id = 1;
-      this.setLang(1);
     }
     this.setAppConfig();
 
@@ -71687,7 +71676,7 @@ TWEEN.Interpolation = {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     state: {
-        lang: 1,
+        lang: 0,
         isConfirmed: false,
         categoryList: [],
         productList: [],
@@ -71804,6 +71793,9 @@ TWEEN.Interpolation = {
         updateApp_conf: function updateApp_conf(state) {
             axios.get("/table/public/api/init/" + state.lang).then(function (res) {
                 state.app_conf = res.data.app_conf;
+                state.lang = res.data.app_conf.lang;
+                console.log("res lang:", res.data.app_conf.lang);
+                console.log("state lang:", state.lang);
             });
         },
         updateIsEN: function updateIsEN(state, payload) {
@@ -71834,8 +71826,6 @@ TWEEN.Interpolation = {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
 
-            console.log("payload", payload);
-            console.log("state app_conf", state.app_conf);
             if (state.app_conf.preorder) {
                 var flag = false;
                 for (var i = 0; i < state.orderList.length; i++) {
@@ -71871,11 +71861,9 @@ TWEEN.Interpolation = {
                 }
                 // if product_id not exist add new
                 if (!flag) {
-                    console.log("worked");
                     state.orderList.push({ item: payload, quantity: 1 });
                 }
 
-                console.log("state orderList", state.orderList);
                 localStorage.setItem("preorderList", JSON.stringify(state.orderList));
             } else {
                 axios.post("/table/public/api/orderitem", {

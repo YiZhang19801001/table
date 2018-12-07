@@ -10,13 +10,13 @@
           v-if="lang==1"
           @click="setToCN"
           class="languageButton"
-          :class="{languageButtonInactive:lang!=1}"
+
         >{{app_conf.lang_switch_cn}}</span>
         <span
           v-if="lang==2"
           @click="setToEN"
           class="languageButton"
-          :class="{languageButtonInactive:lang==1}"
+
         >{{app_conf.lang_switch_en}}</span>
       </span>
     </div>

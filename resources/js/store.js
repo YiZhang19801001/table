@@ -1,6 +1,6 @@
 export default {
     state: {
-        lang: 1,
+        lang: 0,
         isConfirmed: false,
         categoryList: [],
         productList: [],
@@ -119,6 +119,9 @@ export default {
         updateApp_conf(state) {
             axios.get("/table/public/api/init/" + state.lang).then(res => {
                 state.app_conf = res.data.app_conf;
+                state.lang = res.data.app_conf.lang;
+                console.log("res lang:", res.data.app_conf.lang);
+                console.log("state lang:", state.lang);
             });
         },
         updateIsEN(state, payload) {
