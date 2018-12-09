@@ -31,7 +31,7 @@
         <div v-if="item.product_id===selectProduct_id" class="product-background-footer"></div>
         <transition>
           <img
-            :src="`/table/public/images/${item.image}`"
+            :src="`/table/public/images/items/${item.image}`"
             alt
             v-bind:class="{activeimg:item.product_id===selectProduct_id}"
           >

@@ -36,7 +36,7 @@
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
               <img
-                :src="`/table/public/images/${orderItem.item.image}`"
+                :src="`/table/public/images/items/${orderItem.item.image}`"
                 alt
               >
             </div>

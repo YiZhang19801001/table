@@ -66071,7 +66071,7 @@ var render = function() {
               _c("div", { staticClass: "orderItem-img" }, [
                 _c("img", {
                   attrs: {
-                    src: "/table/public/images/" + orderItem.item.image,
+                    src: "/table/public/images/items/" + orderItem.item.image,
                     alt: ""
                   }
                 })
@@ -67651,7 +67651,7 @@ var render = function() {
                       activeimg: item.product_id === _vm.selectProduct_id
                     },
                     attrs: {
-                      src: "/table/public/images/" + item.image,
+                      src: "/table/public/images/items/" + item.image,
                       alt: ""
                     }
                   })
@@ -69410,7 +69410,7 @@ var render = function() {
               _c("div", { staticClass: "orderItem-img" }, [
                 _c("img", {
                   attrs: {
-                    src: "/table/public/images/" + orderItem.item.image,
+                    src: "/table/public/images/items/" + orderItem.item.image,
                     alt: ""
                   }
                 })
