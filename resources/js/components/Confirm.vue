@@ -36,7 +36,8 @@ export default {
       "v",
       "lang",
       "table_number",
-      "pathFrom"
+      "pathFrom",
+      "app_conf"
     ])
   },
   mounted() {

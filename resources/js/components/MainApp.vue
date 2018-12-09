@@ -51,17 +51,19 @@ export default {
     this.setV(this.$route.query.v);
     if (localStorage.language_id) {
       this.setLang(localStorage.language_id);
-    } else {
-      localStorage.language_id = 1;
-      this.setLang(1);
     }
     this.setAppConfig();
 
     this.delay(1000).then(res => {
       if (this.app_conf.preorder && !localStorage.getItem("preorderList")) {
         this.$router.push(`/table/public/preorder`);
-      } else if (this.app_conf.preorder) {
+      } else if (
+        this.app_conf.preorder &&
+        this.$route.path === "/table/public/"
+      ) {
         this.$router.push(`/table/public/confirm`);
+      } else if (this.app_conf.preorder) {
+        this.$router.push(`/table/public/preorder`);
       }
     });
   },

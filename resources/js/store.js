@@ -1,6 +1,6 @@
 export default {
     state: {
-        lang: 1,
+        lang: 0,
         isConfirmed: false,
         categoryList: [],
         productList: [],
@@ -119,6 +119,7 @@ export default {
         updateApp_conf(state) {
             axios.get("/table/public/api/init/" + state.lang).then(res => {
                 state.app_conf = res.data.app_conf;
+                state.lang = res.data.app_conf.lang;
             });
         },
         updateIsEN(state, payload) {
@@ -148,64 +149,65 @@ export default {
         AddNewItemToOrderList(state, payload) {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
-            let flag = true;
-
-            console.log(payload);
+            console.log("add new item to order list @param payload", payload);
             if (state.app_conf.preorder) {
+                let flag = false;
                 for (let i = 0; i < state.orderList.length; i++) {
                     if (
-                        state.orderList[i].item.product_id !==
+                        state.orderList[i].item.product_id ===
                         payload.product_id
                     ) {
-                        flag = false;
-
-                        break;
-                    }
-
-                    if (state.orderList[i].item.options.length > 0) {
-                        for (
-                            let a = 0;
-                            a < state.orderList[i].item.options.length;
-                            a++
-                        ) {
-                            const option = state.orderList[i].item.options[a];
-                            const new_option = payload.options[a];
-                            if (option.pickedOption !== new_option) {
-                                flag = false;
-
-                                break;
-                            }
-                        }
-                    }
-
-                    if (flag === false || state.orderList[i].item.choices < 1) {
-                        break;
-                    } else {
-                        for (
-                            let b = 0;
-                            b < state.orderList[i].item.choices.length;
-                            b++
-                        ) {
-                            const choice = state.orderList[i].item.choices[b];
-                            const new_choice = payload.choices[b];
-                            if (
-                                choice.pickedChoice !== new_choice.pickedChoice
+                        flag = true;
+                        if (state.orderList[i].item.options.length > 0) {
+                            for (
+                                let a = 0;
+                                a < state.orderList[i].item.options.length;
+                                a++
                             ) {
-                                flag = false;
+                                const option =
+                                    state.orderList[i].item.options[a];
+                                const new_option = payload.options[a];
+                                if (option.pickedOption !== new_option) {
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                        }
 
-                                break;
+                        if (
+                            flag === false ||
+                            state.orderList[i].item.choices.length < 1
+                        ) {
+                            break;
+                        } else {
+                            for (
+                                let b = 0;
+                                b < state.orderList[i].item.choices.length;
+                                b++
+                            ) {
+                                const choice =
+                                    state.orderList[i].item.choices[b];
+                                const new_choice = payload.choices[b];
+                                if (
+                                    choice.pickedChoice !==
+                                    new_choice.pickedChoice
+                                ) {
+                                    flag = false;
+                                    break;
+                                }
                             }
                         }
                     }
-
                     if (flag) {
                         state.orderList[i].quantity++;
+                        break;
                     }
                 }
                 // if product_id not exist add new
                 if (!flag) {
                     state.orderList.push({ item: payload, quantity: 1 });
                 }
+
                 localStorage.setItem(
                     "preorderList",
                     JSON.stringify(state.orderList)

@@ -36,7 +36,7 @@
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
               <img
-                src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                :src="`/table/public/images/items/${orderItem.item.image}`"
                 alt
               >
             </div>
@@ -109,21 +109,23 @@ export default {
         newList = localStorage.getItem("preorderList");
         this.replaceList(newList);
       }
+      console.log(this.orderList);
     });
-    let qr = "";
+    let qr = "=QROD=";
     if (this.orderList === null || this.orderList.length === 0) {
       return;
     }
     this.orderList.forEach(el => {
       qr = qr + el.item.upc + ",";
       qr = qr + el.quantity + ",";
+      qr = qr + "0" + ";";
       el.item.choices.forEach(choice => {
-        qr = qr + choice.type + "," + choice.pickedChoice + ",";
+        qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
       });
       el.item.options.forEach(option => {
         qr = qr + option.option_name + "," + option.pickedOption + ",";
       });
-      qr = qr + "0" + ";";
+      //qr = qr + "0" + ";";
     });
 
     this.QrValue = qr.substr(0, qr.length - 1);

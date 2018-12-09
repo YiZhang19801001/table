@@ -69,7 +69,7 @@
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
               <img
-                src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                :src="`/table/public/images/items/${orderItem.item.image}`"
                 alt
               >
             </div>
@@ -150,19 +150,24 @@ export default {
     };
   },
   mounted() {
-    /**qrcode order command: barcode 1, qty1, sizeLevel 1;barcode2, qty2,sizeLevel2
-     * example: 106,2.5,0
-     */
     this.delay(1000).then(res => {
       this.updateOrderList();
+      console.log(this.orderList);
     });
 
     this.delay(2000).then(res => {
-      let qr = "";
+      let qr = "=QROD=";
       this.orderList.forEach(el => {
         qr = qr + el.item.upc + ",";
         qr = qr + el.quantity + ",";
         qr = qr + "0" + ";";
+        el.item.choices.forEach(choice => {
+          qr = qr + choice.barcode + "," + ele.quantity + "," + 0 + ";";
+        });
+        el.item.options.forEach(option => {
+          qr = qr + option.option_name + "," + option.pickedOption + ",";
+        });
+        //qr = qr + "0" + ";";
       });
 
       this.QrValue = qr.substr(0, qr.length - 1);

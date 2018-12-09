@@ -79,6 +79,7 @@ export default {
         ele.pickedChoice = this.pickedChoices[index].value;
         ele.product_ext_id = this.pickedChoices[index].product_ext_id;
         ele.price = this.pickedChoices[index].price;
+        ele.barcode = this.pickedChoices[index].barcode;
       });
       newItem.options.forEach((ele, index) => {
         ele.pickedOption = this.pickedOptions[index].value;
@@ -86,6 +87,7 @@ export default {
           index
         ].product_option_value_id;
         ele.price = this.pickedOptions[index].price;
+        ele.barcode = this.pickedOptions[index].barcode;
       });
       this.pickedChoices = [];
       this.pickedOptions = [];

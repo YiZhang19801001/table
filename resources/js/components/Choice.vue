@@ -47,15 +47,22 @@ export default {
     pickValue() {
       let id = 0;
       let choice_price = 0;
+      let barcode = "";
       this.choice_type.choices.forEach(ele => {
         if (ele.name === this.pickedChoice) {
           id = ele.product_ext_id;
           choice_price = ele.price;
+          barcode = ele.barcode;
         }
       });
       this.$emit(
         "pickValue",
-        { value: this.pickedChoice, product_ext_id: id, price: choice_price },
+        {
+          value: this.pickedChoice,
+          product_ext_id: id,
+          price: choice_price,
+          barcode: barcode
+        },
         this.index
       );
     }

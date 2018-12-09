@@ -1,14 +1,15 @@
 <template>
-    <div class="listContainer" v-scroll-spy-active v-scroll-spy-link>
-        <div class="categoryContainer">
-                <a v-for="(category,index) in categoryList" :key="index" class="categoryList"
-                :class="{customActive:index===scrollPositionId}" @click="select(index)"
-                >
-                   {{category.name}}</a>
-
-
-        </div>
+  <div class="listContainer" v-scroll-spy-active v-scroll-spy-link>
+    <div class="categoryContainer">
+      <a
+        v-for="(category,index) in categoryList"
+        :key="index"
+        class="categoryList"
+        :class="{customActive:index===scrollPositionId}"
+        @click="select(index)"
+      >{{category.name}}</a>
     </div>
+  </div>
 </template>
 
 <script>
