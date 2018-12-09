@@ -238,7 +238,16 @@ class OrderController extends Controller
             $new_orderList_ele["item"]["name"] = $targe_product["name"];
             $new_orderList_ele["item"]["price"] = $price;
             $new_orderList_ele["item"]["upc"] = $p->upc;
-            $new_orderList_ele["item"]["image"] = $p->image === null ? 'default_product.jpg' : $p->image;
+            $image_path = '/table/public/images/items/' . $p->image;
+            $new_product["item"]["image"] = "";
+            if ($p->image === null || !file_exists($_SERVER['DOCUMENT_ROOT'].$image_path)) {
+                $new_product["image"] = 'default_product.jpg';
+
+            } else {
+
+                $new_product["image"] = $p->image;
+            }
+            // $new_orderList_ele["item"]["image"] = $p->image === null ? 'default_product.jpg' : $p->image;
             /**append options & exts only needed when mode is show options */
 
             if ($mode) {

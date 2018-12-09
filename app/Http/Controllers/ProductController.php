@@ -103,15 +103,17 @@ class ProductController extends Controller
                 $new_product["upc"] = $upc;
                 $new_product["description"] = $target_product->description;
 
-                $image_path = '/table/public/images/items/' . $p->image;
+                $image_path = '/table/public/images/items/'.$p->image;
                 $new_product["image"] = "";
-                if ($p->image === null || !file_exists($image_path)) {
+                if ($p->image === null || !file_exists($_SERVER['DOCUMENT_ROOT'].$image_path)) {
                     $new_product["image"] = 'default_product.jpg';
+                    // $new_product["image"] = '24.jpg';
 
                 } else {
 
                     $new_product["image"] = $p->image;
                 }
+                
                 //details only needed for show options mode
                 if ($mode == 9) {
                     $new_product["choices"] = $this->getChoicesHelper($target_product->product_id, $lang);
@@ -127,10 +129,12 @@ class ProductController extends Controller
             array_push($result, $product_group);
         }
 
+
         //return the result to client side
         return response()->json([
             "products" => $result,
         ], 200);
+
     }
 
     public function getChoicesHelper($id, $lang)
