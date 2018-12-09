@@ -85,7 +85,8 @@ class ProductController extends Controller
                 }
                 /** create price value*/
                 //fetch price first
-                $price = Product::where('product_id', $id->product_id)->first()->price;
+                $p = Product::where('product_id', $id->product_id)->first();
+                $price = $p->price;
                 //cut after 2 digts decimal point, i.e 1.0000000 -> 1.00
                 $posOfdecimal = strpos($price, ".");
                 $length = $posOfdecimal + 3;
@@ -93,7 +94,7 @@ class ProductController extends Controller
                 /** end of create price value */
 
                 //create product code value
-                $upc = Product::where('product_id', $id->product_id)->first()->upc;
+                $upc = $p->upc;
 
                 //map values to product
                 $new_product["product_id"] = $target_product->product_id;
@@ -101,6 +102,7 @@ class ProductController extends Controller
                 $new_product["price"] = $price;
                 $new_product["upc"] = $upc;
                 $new_product["description"] = $target_product->description;
+                $new_product["image"] = $p->image === null ? 'default_product.jpg' : $p->image;
                 //details only needed for show options mode
                 if ($mode == 9) {
                     $new_product["choices"] = $this->getChoicesHelper($target_product->product_id, $lang);

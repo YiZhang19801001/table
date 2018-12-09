@@ -7,13 +7,13 @@
     <div class="languageSwitchButtonGroup">
       <span class="button-wrapper">
         <span
-          v-if="lang==1"
+          v-if="lang==2"
           @click="setToCN"
           class="languageButton"
 
         >{{app_conf.lang_switch_cn}}</span>
         <span
-          v-if="lang==2"
+          v-if="lang==1"
           @click="setToEN"
           class="languageButton"
 
@@ -32,13 +32,13 @@ export default {
   methods: {
     ...mapActions(["setLang"]),
     setToCN() {
-      localStorage.language_id = 2;
-      this.setLang(2);
+      localStorage.language_id = 1;
+      this.setLang(1);
       this.$router.go();
     },
     setToEN() {
-      localStorage.language_id = 1;
-      this.setLang(1);
+      localStorage.language_id = 2;
+      this.setLang(2);
       this.$router.go();
     }
   }

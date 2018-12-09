@@ -36,7 +36,7 @@
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
               <img
-                src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                :src="`/table/public/images/${orderItem.item.image}`"
                 alt
               >
             </div>
@@ -109,6 +109,7 @@ export default {
         newList = localStorage.getItem("preorderList");
         this.replaceList(newList);
       }
+      console.log(this.orderList);
     });
     let qr = "=QROD=";
     if (this.orderList === null || this.orderList.length === 0) {

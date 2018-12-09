@@ -10,6 +10,7 @@
         :key="item.product_id"
         class="product"
         v-bind:class="{activeProduct:item.product_id===selectProduct_id}"
+        v-bind:style="{backgroundImage:item.product_id===selectProduct_id?`url(/table/public/images/${item.image})`:null}"
       >
         <span
           class="orderQty"
@@ -30,7 +31,7 @@
         <div v-if="item.product_id===selectProduct_id" class="product-background-footer"></div>
         <transition>
           <img
-            src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            :src="`/table/public/images/${item.image}`"
             alt
             v-bind:class="{activeimg:item.product_id===selectProduct_id}"
           >
@@ -464,7 +465,7 @@ span.orderQty {
   .activeProduct {
     color: black;
     height: 200px;
-    background-image: url(https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+
     background-size: cover;
     h5 {
       color: white;

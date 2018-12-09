@@ -69,7 +69,7 @@
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
               <img
-                src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                :src="`/table/public/images/${orderItem.item.image}`"
                 alt
               >
             </div>
@@ -150,11 +150,9 @@ export default {
     };
   },
   mounted() {
-    /**qrcode order command: barcode 1, qty1, sizeLevel 1;barcode2, qty2,sizeLevel2
-     * example: 106,2.5,0
-     */
     this.delay(1000).then(res => {
       this.updateOrderList();
+      console.log(this.orderList);
     });
 
     this.delay(2000).then(res => {

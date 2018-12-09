@@ -149,7 +149,7 @@ export default {
         AddNewItemToOrderList(state, payload) {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
-
+            console.log("add new item to order list @param payload", payload);
             if (state.app_conf.preorder) {
                 let flag = false;
                 for (let i = 0; i < state.orderList.length; i++) {

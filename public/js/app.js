@@ -62710,11 +62710,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   mounted: function mounted() {
     var _this = this;
 
-    /**qrcode order command: barcode 1, qty1, sizeLevel 1;barcode2, qty2,sizeLevel2
-     * example: 106,2.5,0
-     */
     this.delay(1000).then(function (res) {
       _this.updateOrderList();
+      console.log(_this.orderList);
     });
 
     this.delay(2000).then(function (res) {
@@ -66070,7 +66068,14 @@ var render = function() {
           "ul",
           _vm._l(_vm.orderList, function(orderItem, index) {
             return _c("li", { key: index }, [
-              _vm._m(0, true),
+              _c("div", { staticClass: "orderItem-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/table/public/images/" + orderItem.item.image,
+                    alt: ""
+                  }
+                })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "orderItem-info-container" }, [
                 _c("div", { staticClass: "orderItem-name-quantity" }, [
@@ -66171,27 +66176,13 @@ var render = function() {
         _c(
           "div",
           { staticClass: "footer-button", on: { click: _vm.confirm } },
-          [_vm._m(1)]
+          [_vm._m(0)]
         )
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "orderItem-img" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          alt: ""
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -66513,7 +66504,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.cover[data-v-438ffe92] {\n  position: fixed;\n  height: 100vh;\n  background: #0000009c;\n  width: 100vw;\n  z-index: 600;\n  top: 0;\n  left: 0;\n}\nspan.orderQty[data-v-438ffe92] {\n  position: absolute;\n  background-color: #eb4d4b;\n  color: white;\n  border-radius: 50%;\n  width: 20px;\n  text-align: center;\n  height: 20px;\n  font-weight: 800;\n  line-height: 18px;\n  text-shadow: 1px 1px 1px black;\n  -webkit-box-shadow: inset 0px 0px 1px white;\n          box-shadow: inset 0px 0px 1px white;\n  z-index: 2;\n}\nspan.orderQty.activeOrderQty[data-v-438ffe92] {\n    bottom: 0;\n    left: -10px;\n    width: 40px;\n    height: 40px;\n    line-height: 38px;\n    font-size: 24px;\n}\nspan.orderQty.unactiveOrderQty[data-v-438ffe92] {\n    right: -15px;\n    top: -8px;\n}\n.productList[data-v-438ffe92] {\n  margin-top: 50px;\n  margin-bottom: 50px;\n  width: 70%;\n  -webkit-box-shadow: 0px 2px 3px #00000038;\n          box-shadow: 0px 2px 3px #00000038;\n  padding: 0px 5px 10px 5px;\n}\n.productList .product[data-v-438ffe92] {\n    color: #8a8a8a;\n    padding: 5px 13px;\n    min-height: 80px;\n    margin: auto;\n    margin-bottom: 5px;\n    width: 80%;\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-shadow: 0px 1px 4px #c4c3c2;\n            box-shadow: 0px 1px 4px #c4c3c2;\n    border-radius: 8px;\n}\n.productList .product .product-background[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 100%;\n      top: 0;\n      left: 0;\n      background: #00000038;\n      border-top-right-radius: 8px;\n      border-top-left-radius: 8px;\n}\n.productList .product .product-background-footer[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 30px;\n      bottom: 0;\n      left: 0;\n      background: #ffffffc9;\n      border-bottom-right-radius: 8px;\n      border-bottom-left-radius: 8px;\n      z-index: 1;\n}\n.productList .product img[data-v-438ffe92] {\n      width: 50px;\n      height: 50px;\n      border-radius: 20%;\n      position: absolute;\n      z-index: -1;\n      left: -10%;\n      top: 13px;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n}\n.productList .product img.activeimg[data-v-438ffe92] {\n        display: none;\n        border-radius: 8px;\n        width: 50%;\n        left: 25%;\n        top: 55%;\n        z-index: 10;\n        -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n                box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .text-container[data-v-438ffe92] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 80%;\n      margin: 0 auto;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      padding-left: 5px;\n}\n.productList .product .text-container.activeTextContainer[data-v-438ffe92] {\n        width: 95%;\n        z-index: 3;\n}\n.productList .product .text-container h5[data-v-438ffe92] {\n        color: #5c5a5a;\n        font-weight: 900;\n        font-size: 14px;\n        margin: 0;\n}\n.productList .product .text-container h5.activeH5[data-v-438ffe92] {\n          color: #fff;\n          font-size: 20px;\n          text-shadow: 2px 2px 6px #000;\n}\n.productList .product .text-container .price[data-v-438ffe92] {\n        color: #eb4d4b;\n        margin: 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: end;\n            -ms-flex-pack: end;\n                justify-content: flex-end;\n        padding-right: 10px;\n}\n.productList .product .text-container .price.activePrice[data-v-438ffe92] {\n          font-weight: 700;\n}\n.productList .product .button[data-v-438ffe92] {\n      border-radius: 50%;\n      width: 40px;\n      height: 40px;\n      background: white;\n      font-size: 20px;\n      border: none;\n      color: #f53b50;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n      position: absolute;\n      z-index: 100;\n      right: -20px;\n      outline: none;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      justify-items: center;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .button.active[data-v-438ffe92] {\n        bottom: 0px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .button.active.close-button[data-v-438ffe92] {\n          top: 0;\n          -webkit-transition: all 0.5s;\n          transition: all 0.5s;\n}\n.productList .product .button.unactive[data-v-438ffe92] {\n        top: 20px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .choice-form[data-v-438ffe92] {\n      position: fixed;\n      z-index: 800;\n      width: 80%;\n      top: 30%;\n      left: 10%;\n      border-radius: 3px;\n      background-color: #c7eceef0;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .choice-form .choice-form-title[data-v-438ffe92] {\n        font-size: 16px;\n        font-weight: bold;\n        color: #1e1e1e;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        padding: 2px 10px;\n}\n.productList .product .choice-form .choice-group[data-v-438ffe92] {\n        -webkit-box-shadow: 0px 2px 2px #00000094;\n                box-shadow: 0px 2px 2px #00000094;\n        padding: 8px;\n        border-radius: 3px;\n        background-color: #ffffff91;\n        min-height: 100px;\n        width: 80%;\n        margin: auto;\n        margin-top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -ms-flex-pack: distribute;\n            justify-content: space-around;\n}\n.productList .product .choice-form .choice-group h4[data-v-438ffe92] {\n          font-size: 14px;\n          text-align: center;\n          margin: 0;\n          text-shadow: 1px 1px 1px #c9c2c2;\n          font-weight: bold;\n}\n.productList .product .choice-form .choice-group ul[data-v-438ffe92] {\n          list-style-type: none;\n          padding: 0;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          margin: 0;\n          margin-bottom: 4px;\n}\n.productList .product .choice-form .choice-group ul li[data-v-438ffe92] {\n            color: black;\n            vertical-align: middle;\n            font-size: 11px;\n}\n.productList .product .choice-form .choice-group ul li input[data-v-438ffe92] {\n              -webkit-box-sizing: border-box;\n                      box-sizing: border-box;\n              padding: 0;\n              vertical-align: middle;\n}\n.productList .product .choice-form .choice-group ul li span[data-v-438ffe92] {\n              vertical-align: middle;\n}\n.productList .product .form_button_container[data-v-438ffe92] {\n      text-align: right;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n}\n.productList .product .form_button_container .addButton[data-v-438ffe92] {\n        color: red;\n        padding: 5px 10px;\n        margin: 12px;\n        background: none;\n        border: none;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: #ffbe76;\n        border: 1px solid #ffbe76;\n        -webkit-box-shadow: 0px 0px 4px #00000040;\n                box-shadow: 0px 0px 4px #00000040;\n}\n.productList .activeProduct[data-v-438ffe92] {\n    color: black;\n    height: 200px;\n    background-image: url(https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);\n    background-size: cover;\n}\n.productList .activeProduct h5[data-v-438ffe92] {\n      color: white;\n      font-size: 18px;\n}\n.productList .activeProduct h4[data-v-438ffe92] {\n      color: black;\n}\n.productList .activeProduct p[data-v-438ffe92] {\n      max-height: none;\n      float: none;\n}\n.productList h4[data-v-438ffe92] {\n    margin-left: 5px;\n    margin-top: 6px;\n    margin-bottom: 0px;\n    text-shadow: 1px 1px 1px #c9c2c2;\n    font-weight: 300;\n    color: #9b9b9b;\n}\n.productList .product-description[data-v-438ffe92] {\n    font-size: 10px;\n    font-weight: 800;\n    padding: 3px 10px;\n    line-height: 1rem;\n    color: black;\n    overflow: scroll;\n    background-color: #ffffffcc;\n    border-radius: 3px;\n    max-height: 80px;\n    /* box-shadow: inset 0px 0px 1px #fff; */\n}\n.productList p[data-v-438ffe92] {\n    margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.cover[data-v-438ffe92] {\n  position: fixed;\n  height: 100vh;\n  background: #0000009c;\n  width: 100vw;\n  z-index: 600;\n  top: 0;\n  left: 0;\n}\nspan.orderQty[data-v-438ffe92] {\n  position: absolute;\n  background-color: #eb4d4b;\n  color: white;\n  border-radius: 50%;\n  width: 20px;\n  text-align: center;\n  height: 20px;\n  font-weight: 800;\n  line-height: 18px;\n  text-shadow: 1px 1px 1px black;\n  -webkit-box-shadow: inset 0px 0px 1px white;\n          box-shadow: inset 0px 0px 1px white;\n  z-index: 2;\n}\nspan.orderQty.activeOrderQty[data-v-438ffe92] {\n    bottom: 0;\n    left: -10px;\n    width: 40px;\n    height: 40px;\n    line-height: 38px;\n    font-size: 24px;\n}\nspan.orderQty.unactiveOrderQty[data-v-438ffe92] {\n    right: -15px;\n    top: -8px;\n}\n.productList[data-v-438ffe92] {\n  margin-top: 50px;\n  margin-bottom: 50px;\n  width: 70%;\n  -webkit-box-shadow: 0px 2px 3px #00000038;\n          box-shadow: 0px 2px 3px #00000038;\n  padding: 0px 5px 10px 5px;\n}\n.productList .product[data-v-438ffe92] {\n    color: #8a8a8a;\n    padding: 5px 13px;\n    min-height: 80px;\n    margin: auto;\n    margin-bottom: 5px;\n    width: 80%;\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-shadow: 0px 1px 4px #c4c3c2;\n            box-shadow: 0px 1px 4px #c4c3c2;\n    border-radius: 8px;\n}\n.productList .product .product-background[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 100%;\n      top: 0;\n      left: 0;\n      background: #00000038;\n      border-top-right-radius: 8px;\n      border-top-left-radius: 8px;\n}\n.productList .product .product-background-footer[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 30px;\n      bottom: 0;\n      left: 0;\n      background: #ffffffc9;\n      border-bottom-right-radius: 8px;\n      border-bottom-left-radius: 8px;\n      z-index: 1;\n}\n.productList .product img[data-v-438ffe92] {\n      width: 50px;\n      height: 50px;\n      border-radius: 20%;\n      position: absolute;\n      z-index: -1;\n      left: -10%;\n      top: 13px;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n}\n.productList .product img.activeimg[data-v-438ffe92] {\n        display: none;\n        border-radius: 8px;\n        width: 50%;\n        left: 25%;\n        top: 55%;\n        z-index: 10;\n        -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n                box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .text-container[data-v-438ffe92] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 80%;\n      margin: 0 auto;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      padding-left: 5px;\n}\n.productList .product .text-container.activeTextContainer[data-v-438ffe92] {\n        width: 95%;\n        z-index: 3;\n}\n.productList .product .text-container h5[data-v-438ffe92] {\n        color: #5c5a5a;\n        font-weight: 900;\n        font-size: 14px;\n        margin: 0;\n}\n.productList .product .text-container h5.activeH5[data-v-438ffe92] {\n          color: #fff;\n          font-size: 20px;\n          text-shadow: 2px 2px 6px #000;\n}\n.productList .product .text-container .price[data-v-438ffe92] {\n        color: #eb4d4b;\n        margin: 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: end;\n            -ms-flex-pack: end;\n                justify-content: flex-end;\n        padding-right: 10px;\n}\n.productList .product .text-container .price.activePrice[data-v-438ffe92] {\n          font-weight: 700;\n}\n.productList .product .button[data-v-438ffe92] {\n      border-radius: 50%;\n      width: 40px;\n      height: 40px;\n      background: white;\n      font-size: 20px;\n      border: none;\n      color: #f53b50;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n      position: absolute;\n      z-index: 100;\n      right: -20px;\n      outline: none;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      justify-items: center;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .button.active[data-v-438ffe92] {\n        bottom: 0px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .button.active.close-button[data-v-438ffe92] {\n          top: 0;\n          -webkit-transition: all 0.5s;\n          transition: all 0.5s;\n}\n.productList .product .button.unactive[data-v-438ffe92] {\n        top: 20px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .choice-form[data-v-438ffe92] {\n      position: fixed;\n      z-index: 800;\n      width: 80%;\n      top: 30%;\n      left: 10%;\n      border-radius: 3px;\n      background-color: #c7eceef0;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .choice-form .choice-form-title[data-v-438ffe92] {\n        font-size: 16px;\n        font-weight: bold;\n        color: #1e1e1e;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        padding: 2px 10px;\n}\n.productList .product .choice-form .choice-group[data-v-438ffe92] {\n        -webkit-box-shadow: 0px 2px 2px #00000094;\n                box-shadow: 0px 2px 2px #00000094;\n        padding: 8px;\n        border-radius: 3px;\n        background-color: #ffffff91;\n        min-height: 100px;\n        width: 80%;\n        margin: auto;\n        margin-top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -ms-flex-pack: distribute;\n            justify-content: space-around;\n}\n.productList .product .choice-form .choice-group h4[data-v-438ffe92] {\n          font-size: 14px;\n          text-align: center;\n          margin: 0;\n          text-shadow: 1px 1px 1px #c9c2c2;\n          font-weight: bold;\n}\n.productList .product .choice-form .choice-group ul[data-v-438ffe92] {\n          list-style-type: none;\n          padding: 0;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          margin: 0;\n          margin-bottom: 4px;\n}\n.productList .product .choice-form .choice-group ul li[data-v-438ffe92] {\n            color: black;\n            vertical-align: middle;\n            font-size: 11px;\n}\n.productList .product .choice-form .choice-group ul li input[data-v-438ffe92] {\n              -webkit-box-sizing: border-box;\n                      box-sizing: border-box;\n              padding: 0;\n              vertical-align: middle;\n}\n.productList .product .choice-form .choice-group ul li span[data-v-438ffe92] {\n              vertical-align: middle;\n}\n.productList .product .form_button_container[data-v-438ffe92] {\n      text-align: right;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n}\n.productList .product .form_button_container .addButton[data-v-438ffe92] {\n        color: red;\n        padding: 5px 10px;\n        margin: 12px;\n        background: none;\n        border: none;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: #ffbe76;\n        border: 1px solid #ffbe76;\n        -webkit-box-shadow: 0px 0px 4px #00000040;\n                box-shadow: 0px 0px 4px #00000040;\n}\n.productList .activeProduct[data-v-438ffe92] {\n    color: black;\n    height: 200px;\n    background-size: cover;\n}\n.productList .activeProduct h5[data-v-438ffe92] {\n      color: white;\n      font-size: 18px;\n}\n.productList .activeProduct h4[data-v-438ffe92] {\n      color: black;\n}\n.productList .activeProduct p[data-v-438ffe92] {\n      max-height: none;\n      float: none;\n}\n.productList h4[data-v-438ffe92] {\n    margin-left: 5px;\n    margin-top: 6px;\n    margin-bottom: 0px;\n    text-shadow: 1px 1px 1px #c9c2c2;\n    font-weight: 300;\n    color: #9b9b9b;\n}\n.productList .product-description[data-v-438ffe92] {\n    font-size: 10px;\n    font-weight: 800;\n    padding: 3px 10px;\n    line-height: 1rem;\n    color: black;\n    overflow: scroll;\n    background-color: #ffffffcc;\n    border-radius: 3px;\n    max-height: 80px;\n    /* box-shadow: inset 0px 0px 1px #fff; */\n}\n.productList p[data-v-438ffe92] {\n    margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -66529,6 +66520,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -67613,6 +67605,12 @@ var render = function() {
                 staticClass: "product",
                 class: {
                   activeProduct: item.product_id === _vm.selectProduct_id
+                },
+                style: {
+                  backgroundImage:
+                    item.product_id === _vm.selectProduct_id
+                      ? "url(/table/public/images/" + item.image + ")"
+                      : null
                 }
               },
               [
@@ -67646,8 +67644,7 @@ var render = function() {
                       activeimg: item.product_id === _vm.selectProduct_id
                     },
                     attrs: {
-                      src:
-                        "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                      src: "/table/public/images/" + item.image,
                       alt: ""
                     }
                   })
@@ -68582,13 +68579,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["table_number", "app_conf", "lang", "pathFrom"])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setLang"]), {
     setToCN: function setToCN() {
-      localStorage.language_id = 2;
-      this.setLang(2);
+      localStorage.language_id = 1;
+      this.setLang(1);
       this.$router.go();
     },
     setToEN: function setToEN() {
-      localStorage.language_id = 1;
-      this.setLang(1);
+      localStorage.language_id = 2;
+      this.setLang(2);
       this.$router.go();
     }
   })
@@ -68617,7 +68614,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "languageSwitchButtonGroup" }, [
       _c("span", { staticClass: "button-wrapper" }, [
-        _vm.lang == 1
+        _vm.lang == 2
           ? _c(
               "span",
               { staticClass: "languageButton", on: { click: _vm.setToCN } },
@@ -68625,7 +68622,7 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.lang == 2
+        _vm.lang == 1
           ? _c(
               "span",
               { staticClass: "languageButton", on: { click: _vm.setToEN } },
@@ -69299,6 +69296,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         newList = localStorage.getItem("preorderList");
         _this.replaceList(newList);
       }
+      console.log(_this.orderList);
     });
     var qr = "=QROD=";
     if (this.orderList === null || this.orderList.length === 0) {
@@ -69402,7 +69400,14 @@ var render = function() {
           "ul",
           _vm._l(_vm.orderList, function(orderItem, index) {
             return _c("li", { key: index }, [
-              _vm._m(0, true),
+              _c("div", { staticClass: "orderItem-img" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/table/public/images/" + orderItem.item.image,
+                    alt: ""
+                  }
+                })
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "orderItem-info-container" }, [
                 _c("div", { staticClass: "orderItem-name-quantity" }, [
@@ -69483,22 +69488,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "orderItem-img" }, [
-      _c("img", {
-        attrs: {
-          src:
-            "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          alt: ""
-        }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -71840,7 +71830,7 @@ TWEEN.Interpolation = {
         AddNewItemToOrderList: function AddNewItemToOrderList(state, payload) {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
-
+            console.log("add new item to order list @param payload", payload);
             if (state.app_conf.preorder) {
                 var flag = false;
                 for (var i = 0; i < state.orderList.length; i++) {
