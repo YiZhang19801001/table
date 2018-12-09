@@ -67616,7 +67616,7 @@ var render = function() {
                 style: {
                   backgroundImage:
                     item.product_id === _vm.selectProduct_id
-                      ? "url(/table/public/images/" + item.image + ")"
+                      ? "url(/table/public/images/items/" + item.image + ")"
                       : null
                 }
               },

@@ -10,7 +10,7 @@
         :key="item.product_id"
         class="product"
         v-bind:class="{activeProduct:item.product_id===selectProduct_id}"
-        v-bind:style="{backgroundImage:item.product_id===selectProduct_id?`url(/table/public/images/${item.image})`:null}"
+        v-bind:style="{backgroundImage:item.product_id===selectProduct_id?`url(/table/public/images/items/${item.image})`:null}"
       >
         <span
           class="orderQty"

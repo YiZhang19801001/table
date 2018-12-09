@@ -102,7 +102,16 @@ class ProductController extends Controller
                 $new_product["price"] = $price;
                 $new_product["upc"] = $upc;
                 $new_product["description"] = $target_product->description;
-                $new_product["image"] = $p->image === null ? 'default_product.jpg' : $p->image;
+
+                $image_path = '/table/public/images/items/' . $p->image;
+                $new_product["image"] = "";
+                if ($p->image === null || !file_exists($image_path)) {
+                    $new_product["image"] = 'default_product.jpg';
+
+                } else {
+
+                    $new_product["image"] = $p->image;
+                }
                 //details only needed for show options mode
                 if ($mode == 9) {
                     $new_product["choices"] = $this->getChoicesHelper($target_product->product_id, $lang);
