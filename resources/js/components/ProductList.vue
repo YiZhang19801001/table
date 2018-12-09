@@ -1,5 +1,5 @@
 <template>
-  <div class="productList" v-scroll-spy ref="listView">
+  <div class="productList" v-scroll-spy="{offset: 50}" ref="listView">
     <!-- List:: show groups for products -->
     <div v-for="(product,index) in productList" :key="index" ref="cates">
       <!-- category title for separating different group of products -->

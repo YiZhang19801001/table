@@ -67584,7 +67584,14 @@ var render = function() {
   return _c(
     "div",
     {
-      directives: [{ name: "scroll-spy", rawName: "v-scroll-spy" }],
+      directives: [
+        {
+          name: "scroll-spy",
+          rawName: "v-scroll-spy",
+          value: { offset: 50 },
+          expression: "{offset: 50}"
+        }
+      ],
       ref: "listView",
       staticClass: "productList"
     },
