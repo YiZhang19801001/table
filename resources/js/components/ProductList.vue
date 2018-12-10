@@ -52,14 +52,14 @@
         </div>
         <!-- button to control folder or expand each product -->
         <transition>
-          <button
+          <div
             class="button"
             v-if="table_number || app_conf.preorder"
             v-bind:class="{active:item.product_id===selectProduct_id,unactive:item.product_id!==selectProduct_id}"
             @click="wandOrder(item)"
           >
-            <i class="material-icons">add</i>
-          </button>
+            <img src="/table/public/images/layout/plus_button.png" alt>
+          </div>
         </transition>
         <!-- button to add new product to cart -->
         <button
@@ -247,7 +247,7 @@ span.orderQty {
   z-index: 2;
   &.activeOrderQty {
     bottom: 0;
-    left: -10px;
+    left: 10px;
     width: 40px;
     height: 40px;
     line-height: 38px;
@@ -259,25 +259,86 @@ span.orderQty {
   }
 }
 .productList {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 10vh;
+  margin-bottom: 9vh;
   width: 70%;
-  box-shadow: 0px 2px 3px #00000038;
-  padding: 0px 5px 10px 5px;
-
-  //position: relative;
-
+  padding-left: 12px;
+  background-color: #f1f1f1;
+  overflow: scroll;
+  height: 81vh;
+  h4 {
+    height: 24px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+  }
   .product {
-    color: #8a8a8a;
-    padding: 5px 13px;
-    min-height: 80px;
-    margin: auto;
-    margin-bottom: 5px;
-    width: 80%;
+    color: #444444;
+    border-bottom: 3px solid white;
+    width: calc(100% - 7px);
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    box-shadow: 0px 1px 4px #c4c3c2;
-    border-radius: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 9px;
+    margin-right: 7px;
+    img {
+      width: 20vw;
+      height: 7vh;
+      border-radius: 4px;
+      transition: all 0.5s;
+      &.activeimg {
+        display: none;
+        border-radius: 8px;
+        width: 50%;
+        left: 25%;
+        top: 55%;
+        z-index: 10;
+        box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);
+        transition: all 0.5s;
+      }
+    }
+    .text-container {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 7px;
+      &.activeTextContainer {
+        width: 95%;
+        z-index: 3;
+      }
+
+      h5 {
+        height: 26px;
+        font-size: 10px;
+        color: #444444;
+        margin-bottom: 0px;
+        line-height: 26px;
+        &.activeH5 {
+          color: #fff;
+          font-size: 20px;
+          text-shadow: 2px 2px 6px #000;
+        }
+      }
+      .price {
+        margin: 0;
+        font-weight: 600;
+        font-size: 12px;
+        opacity: 0.9;
+        height: 15px;
+        line-height: 17px;
+        padding-right: 10px;
+        color: #333;
+        &.activePrice {
+          font-weight: 700;
+        }
+      }
+    }
+
     .product-background {
       width: 100%;
       position: absolute;
@@ -299,79 +360,15 @@ span.orderQty {
       border-bottom-left-radius: 8px;
       z-index: 1;
     }
-    img {
-      width: 50px;
-      height: 50px;
-      border-radius: 20%;
-      position: absolute;
-      z-index: -1;
-      left: -10%;
-      top: 13px;
-      transition: all 0.5s;
-      box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);
 
-      &.activeimg {
-        display: none;
-        border-radius: 8px;
-        width: 50%;
-        left: 25%;
-        top: 55%;
-        z-index: 10;
-        box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);
-        transition: all 0.5s;
-      }
-    }
-    .text-container {
-      display: flex;
-      width: 80%;
-      margin: 0 auto;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: 5px;
-      &.activeTextContainer {
-        width: 95%;
-        z-index: 3;
-      }
-
-      h5 {
-        color: #5c5a5a;
-        font-weight: 900;
-        font-size: 14px;
-        margin: 0;
-        &.activeH5 {
-          color: #fff;
-          font-size: 20px;
-          text-shadow: 2px 2px 6px #000;
-        }
-      }
-      .price {
-        color: #eb4d4b;
-        margin: 0;
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 10px;
-        &.activePrice {
-          font-weight: 700;
-        }
-      }
-    }
     .button {
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      background: white;
-      font-size: 20px;
-      border: none;
-      color: #f53b50;
-      box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);
-      position: absolute;
-      z-index: 100;
-      right: -20px;
-      outline: none;
       display: flex;
-      justify-content: center;
-      justify-items: center;
-      transition: all 0.5s;
+      flex-direction: column;
+      justify-content: flex-end;
+      img {
+        width: 16px;
+        height: 16px;
+      }
       &.active {
         bottom: 0px;
         transition: all 0.5s;
@@ -479,14 +476,7 @@ span.orderQty {
       float: none;
     }
   }
-  h4 {
-    margin-left: 5px;
-    margin-top: 6px;
-    margin-bottom: 0px;
-    text-shadow: 1px 1px 1px #c9c2c2;
-    font-weight: 300;
-    color: #9b9b9b;
-  }
+
   .product-description {
     font-size: 10px;
     font-weight: 800;

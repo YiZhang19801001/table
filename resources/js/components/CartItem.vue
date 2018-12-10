@@ -2,14 +2,17 @@
   <div class="cart-item">
     <span class="shoppingCart-item-name">
       <p class="orderItem-name">
-        <span class="orderItem-name-text">{{orderItem.item.name}}</span>
+        <span class="orderItem-name-text">
+          <span>{{orderItem.item.name}}</span>
+          <span>${{totalPrice}}</span>
+        </span>
       </p>
       <ul v-if="app_conf.show_option">
         <li
           class="orderItem-choice"
           v-for="(choice,index) in orderItem.item.choices"
           :key="`choice${index}`"
-        >{{choice.type}} : {{choice.pickedChoice}} {{choice.price}}</li>
+        >{{choice.type}} : {{choice.pickedChoice}} ${{choice.price}}</li>
         <li
           class="orderItem-choice"
           v-for="(option,index2) in orderItem.item.options"
@@ -21,16 +24,22 @@
         </li>
       </ul>
     </span>
-    <span class="shoppingCart-item-price">{{totalPrice}}</span>
     <div class="quantity-wrap">
-      <span class="increase-button" @click="increase()">
-        <i class="material-icons">add</i>
-      </span>
-      <span class="orderItem-quantity">{{orderItem.quantity}}</span>
       <span class="decrease-button" @click="decrease()">
-        <i class="material-icons">remove</i>
+        <img src="/table/public/images/layout/cart_sub.png" alt>
+      </span>
+      <span class="orderItem-quantity">
+        <span class="number">{{orderItem.quantity}}</span>
+      </span>
+      
+      <span class="increase-button" @click="increase()">
+        <img src="/table/public/images/layout/cart_plus.png" alt>
       </span>
     </div>
+
+    <span class="shoppingCart-item-price">
+      <span>${{(totalPrice * orderItem.quantity).toFixed(2)}}</span>
+    </span>
   </div>
 </template>
 <script>
@@ -66,8 +75,7 @@ export default {
     }
 
     this.totalPrice = (
-      this.orderItem.quantity *
-      (parseFloat(this.orderItem.item.price) + optionPrice)
+      parseFloat(this.orderItem.item.price) + optionPrice
     ).toFixed(2);
   },
   methods: {
@@ -105,23 +113,31 @@ export default {
   justify-content: space-between;
   overflow: scroll;
   margin: 2px 0px;
+  min-height: 60px;
   border-bottom: 1px solid #e4e0e0;
 }
-.decrease-button {
-  background-color: #eb4d4b;
+.quantity-wrap {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
-.increase-button {
-  background-color: #eb4d4b;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: white;
+  justify-content: space-between;
+  width: 70px;
+  .decrease-button,
+  .increase-button,
+  .orderItem-quantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .orderItem-quantity {
+    display: flex;
+    justify-content: center;
+    .number {
+      height: 22px;
+      line-height: 22px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #f55747;
+    }
+  }
 }
 
 ul {
@@ -150,6 +166,10 @@ ul {
         }
         .orderItem-name-text {
           flex: 4;
+          margin-top: 5px;
+          display: flex;
+          justify-content: space-between;
+          padding-right: 15px;
         }
       }
       .orderItem-choice {
@@ -164,13 +184,20 @@ ul {
       flex: 1;
       text-align: right;
       padding-right: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      span {
+        height: 15px;
+        opacity: 0.9;
+
+        font-size: 12px;
+        font-weight: 500;
+
+        color: #333333;
+      }
     }
   }
-}
-span.orderItem-quantity {
-  display: flex;
-  justify-content: center;
-  box-shadow: inset 0px 0px 1px black;
 }
 
 .shoppingCart-confirm-button {

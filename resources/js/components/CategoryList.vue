@@ -42,37 +42,34 @@ export default {
 .listContainer {
   justify-content: space-between;
   display: flex;
-  height: 100%;
-  width: 30%;
+  height: 100vh;
+  width: 30vw;
   flex-direction: column;
   position: relative;
   font-weight: bold;
   letter-spacing: 0.4px;
-
+  margin-top: 10vh;
   //
   .categoryContainer {
     position: fixed;
     width: 30%;
     overflow: scroll;
-    height: 80%;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    height: 81vh;
+    margin-bottom: 9vh;
     display: flex;
     flex-direction: column;
     .categoryList {
-      padding: 5px 10px;
-      font-weight: 700;
-      color: #000;
-      border-bottom: 1px solid #80808026;
+      text-align: center;
+      padding: 18px 9px;
+      width: 100%;
+      color: #444;
       transition: all 0.5s;
+      border-bottom: 0.5px solid #b4b4b4;
     }
     .customActive {
-      color: #f8fafc;
-      border-left: 4px solid #ffc24a;
-      border-right: 4px solid #ffc24a;
-      background-color: #eb4d4b;
-      box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);
-      text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 0px;
+      border-left: 4px solid #f55747;
+      background-color: #f1f1f1;
+      border-bottom: none;
     }
   }
 }

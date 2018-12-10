@@ -6,7 +6,7 @@
       <!-- header will always show when shopping cart is not empty -->
       <div class="shoppingCart-header" :class="{expandHeader:isExpand}" @click="toggle">
         <div class="shoppingIcon">
-          <i class="material-icons">shopping_cart</i>
+          <img src="/table/public/images/layout/shopping_cart.png" alt>
           <span class="badge">{{totalQuantityOfOrder}}</span>
         </div>
         <div
@@ -146,6 +146,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cart-item {
+  min-height: 60px;
+}
 .cover {
   position: fixed;
   top: 0;
@@ -163,37 +166,26 @@ export default {
 .shoppingCart {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   left: 0;
   z-index: 200;
-  box-shadow: 0px -5px 5px #00000038;
 
   .shoppingCart-header {
     display: flex;
     position: relative;
-    justify-content: center;
-    height: 40px;
-    // background-image: url("http://www.aupos.com.au/wp-content/uploads/2017/03/logo.png");
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    background-color: rgb(235, 77, 75);
+    width: 100%;
+    height: 8.5vh;
+    background-color: #f55747;
     transition: all 0.3s;
     &.expandHeader {
-      background-color: rgb(235, 77, 75);
       transition: all 0.3s;
     }
     .shoppingIcon {
-      display: inline-block;
-      transform: scale(1.6);
       width: 26px;
       height: 20px;
       z-index: 250;
-      position: absolute;
-      top: 10px;
-      left: 14px;
     }
     .badge {
-      display: inline-block;
       border-radius: 50%;
       color: #f8fafc;
       text-shadow: 1px 1px 2px black;
@@ -209,9 +201,6 @@ export default {
       color: white;
       text-shadow: 1px 1px 2px black;
       letter-spacing: 1.2px;
-    }
-    img {
-      max-width: 60px;
     }
   }
   ul {
@@ -229,6 +218,7 @@ export default {
       margin-bottom: 5px;
       .shoppingCart-item-name {
         flex: 4;
+        padding-top: 10px;
         .orderItem-name {
           margin: 0;
         }

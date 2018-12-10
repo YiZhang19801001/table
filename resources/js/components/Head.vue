@@ -6,18 +6,8 @@
 
     <div class="languageSwitchButtonGroup">
       <span class="button-wrapper">
-        <span
-          v-if="lang==2"
-          @click="setToCN"
-          class="languageButton"
-
-        >{{app_conf.lang_switch_cn}}</span>
-        <span
-          v-if="lang==1"
-          @click="setToEN"
-          class="languageButton"
-
-        >{{app_conf.lang_switch_en}}</span>
+        <span v-if="lang==2" @click="setToCN" class="languageButton">{{app_conf.lang_switch_cn}}</span>
+        <span v-if="lang==1" @click="setToEN" class="languageButton">{{app_conf.lang_switch_en}}</span>
       </span>
     </div>
   </div>
@@ -50,48 +40,50 @@ export default {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: 8%;
+  width: 100vw;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(235, 77, 75);
-  color: #f8fafc;
-  //   padding: 6px;
-  box-shadow: 0px 5px 5px #00000038;
+  background-image: url("/table/public/images/banner.png");
+  background-size: cover;
+  color: #fff;
   z-index: 200;
-}
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 6;
-}
-h2 {
-  text-align: center;
-  font-weight: bold;
-  text-shadow: 2px 2px 6px #000;
-}
-/*language switch button :yin_yang:*/
-.languageSwitchButtonGroup {
-  text-align: right;
-  background-color: #ffc24a;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  .button-wrapper {
-    text-align: center;
-    font-size: 22px;
+  border-bottom: 3px solid white;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 6;
+    h2 {
+      font-weight: bold;
+      font-size: 32px;
+      text-transform: uppercase;
+      margin: 0;
+      margin-top: 3px;
+      margin-left: 20px;
+    }
   }
-  .languageButton {
-    color: white;
-    font-weight: 500;
-    text-shadow: 1px 1px 3px black;
-    &.languageButtonInactive {
-      background-color: #933b38;
-      padding: 0px 5px;
-      box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5);
+  /*language switch button :yin_yang:*/
+  .languageSwitchButtonGroup {
+    text-align: right;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    .button-wrapper {
+      text-align: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      margin-top: 3px;
+    }
+    .languageButton {
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      height: 20px;
     }
   }
 }

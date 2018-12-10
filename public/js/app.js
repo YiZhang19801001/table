@@ -66364,7 +66364,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.listContainer[data-v-05702eb2] {\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100%;\n  width: 30%;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: relative;\n  font-weight: bold;\n  letter-spacing: 0.4px;\n}\n.listContainer .categoryContainer[data-v-05702eb2] {\n    position: fixed;\n    width: 30%;\n    overflow: scroll;\n    height: 80%;\n    margin-top: 15%;\n    margin-bottom: 15%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.listContainer .categoryContainer .categoryList[data-v-05702eb2] {\n      padding: 5px 10px;\n      font-weight: 700;\n      color: #000;\n      border-bottom: 1px solid #80808026;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.listContainer .categoryContainer .customActive[data-v-05702eb2] {\n      color: #f8fafc;\n      border-left: 4px solid #ffc24a;\n      border-right: 4px solid #ffc24a;\n      background-color: #eb4d4b;\n      -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);\n              box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.5);\n      text-shadow: rgba(0, 0, 0, 0.8) 1px 1px 0px;\n}\n", ""]);
+exports.push([module.i, "\n.listContainer[data-v-05702eb2] {\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  height: 100vh;\n  width: 30vw;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: relative;\n  font-weight: bold;\n  letter-spacing: 0.4px;\n  margin-top: 10vh;\n}\n.listContainer .categoryContainer[data-v-05702eb2] {\n    position: fixed;\n    width: 30%;\n    overflow: scroll;\n    height: 81vh;\n    margin-bottom: 9vh;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n}\n.listContainer .categoryContainer .categoryList[data-v-05702eb2] {\n      text-align: center;\n      padding: 18px 9px;\n      width: 100%;\n      color: #444;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n      border-bottom: 0.5px solid #b4b4b4;\n}\n.listContainer .categoryContainer .customActive[data-v-05702eb2] {\n      border-left: 4px solid #f55747;\n      background-color: #f1f1f1;\n      border-bottom: none;\n}\n", ""]);
 
 // exports
 
@@ -66504,7 +66504,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.cover[data-v-438ffe92] {\n  position: fixed;\n  height: 100vh;\n  background: #0000009c;\n  width: 100vw;\n  z-index: 600;\n  top: 0;\n  left: 0;\n}\nspan.orderQty[data-v-438ffe92] {\n  position: absolute;\n  background-color: #eb4d4b;\n  color: white;\n  border-radius: 50%;\n  width: 20px;\n  text-align: center;\n  height: 20px;\n  font-weight: 800;\n  line-height: 18px;\n  text-shadow: 1px 1px 1px black;\n  -webkit-box-shadow: inset 0px 0px 1px white;\n          box-shadow: inset 0px 0px 1px white;\n  z-index: 2;\n}\nspan.orderQty.activeOrderQty[data-v-438ffe92] {\n    bottom: 0;\n    left: -10px;\n    width: 40px;\n    height: 40px;\n    line-height: 38px;\n    font-size: 24px;\n}\nspan.orderQty.unactiveOrderQty[data-v-438ffe92] {\n    right: -15px;\n    top: -8px;\n}\n.productList[data-v-438ffe92] {\n  margin-top: 50px;\n  margin-bottom: 50px;\n  width: 70%;\n  -webkit-box-shadow: 0px 2px 3px #00000038;\n          box-shadow: 0px 2px 3px #00000038;\n  padding: 0px 5px 10px 5px;\n}\n.productList .product[data-v-438ffe92] {\n    color: #8a8a8a;\n    padding: 5px 13px;\n    min-height: 80px;\n    margin: auto;\n    margin-bottom: 5px;\n    width: 80%;\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-shadow: 0px 1px 4px #c4c3c2;\n            box-shadow: 0px 1px 4px #c4c3c2;\n    border-radius: 8px;\n}\n.productList .product .product-background[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 100%;\n      top: 0;\n      left: 0;\n      background: #00000038;\n      border-top-right-radius: 8px;\n      border-top-left-radius: 8px;\n}\n.productList .product .product-background-footer[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 30px;\n      bottom: 0;\n      left: 0;\n      background: #ffffffc9;\n      border-bottom-right-radius: 8px;\n      border-bottom-left-radius: 8px;\n      z-index: 1;\n}\n.productList .product img[data-v-438ffe92] {\n      width: 50px;\n      height: 50px;\n      border-radius: 20%;\n      position: absolute;\n      z-index: -1;\n      left: -10%;\n      top: 13px;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n}\n.productList .product img.activeimg[data-v-438ffe92] {\n        display: none;\n        border-radius: 8px;\n        width: 50%;\n        left: 25%;\n        top: 55%;\n        z-index: 10;\n        -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n                box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .text-container[data-v-438ffe92] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 80%;\n      margin: 0 auto;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      padding-left: 5px;\n}\n.productList .product .text-container.activeTextContainer[data-v-438ffe92] {\n        width: 95%;\n        z-index: 3;\n}\n.productList .product .text-container h5[data-v-438ffe92] {\n        color: #5c5a5a;\n        font-weight: 900;\n        font-size: 14px;\n        margin: 0;\n}\n.productList .product .text-container h5.activeH5[data-v-438ffe92] {\n          color: #fff;\n          font-size: 20px;\n          text-shadow: 2px 2px 6px #000;\n}\n.productList .product .text-container .price[data-v-438ffe92] {\n        color: #eb4d4b;\n        margin: 0;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: end;\n            -ms-flex-pack: end;\n                justify-content: flex-end;\n        padding-right: 10px;\n}\n.productList .product .text-container .price.activePrice[data-v-438ffe92] {\n          font-weight: 700;\n}\n.productList .product .button[data-v-438ffe92] {\n      border-radius: 50%;\n      width: 40px;\n      height: 40px;\n      background: white;\n      font-size: 20px;\n      border: none;\n      color: #f53b50;\n      -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n              box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n      position: absolute;\n      z-index: 100;\n      right: -20px;\n      outline: none;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      justify-items: center;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .button.active[data-v-438ffe92] {\n        bottom: 0px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .button.active.close-button[data-v-438ffe92] {\n          top: 0;\n          -webkit-transition: all 0.5s;\n          transition: all 0.5s;\n}\n.productList .product .button.unactive[data-v-438ffe92] {\n        top: 20px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .choice-form[data-v-438ffe92] {\n      position: fixed;\n      z-index: 800;\n      width: 80%;\n      top: 30%;\n      left: 10%;\n      border-radius: 3px;\n      background-color: #c7eceef0;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .choice-form .choice-form-title[data-v-438ffe92] {\n        font-size: 16px;\n        font-weight: bold;\n        color: #1e1e1e;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        padding: 2px 10px;\n}\n.productList .product .choice-form .choice-group[data-v-438ffe92] {\n        -webkit-box-shadow: 0px 2px 2px #00000094;\n                box-shadow: 0px 2px 2px #00000094;\n        padding: 8px;\n        border-radius: 3px;\n        background-color: #ffffff91;\n        min-height: 100px;\n        width: 80%;\n        margin: auto;\n        margin-top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -ms-flex-pack: distribute;\n            justify-content: space-around;\n}\n.productList .product .choice-form .choice-group h4[data-v-438ffe92] {\n          font-size: 14px;\n          text-align: center;\n          margin: 0;\n          text-shadow: 1px 1px 1px #c9c2c2;\n          font-weight: bold;\n}\n.productList .product .choice-form .choice-group ul[data-v-438ffe92] {\n          list-style-type: none;\n          padding: 0;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          margin: 0;\n          margin-bottom: 4px;\n}\n.productList .product .choice-form .choice-group ul li[data-v-438ffe92] {\n            color: black;\n            vertical-align: middle;\n            font-size: 11px;\n}\n.productList .product .choice-form .choice-group ul li input[data-v-438ffe92] {\n              -webkit-box-sizing: border-box;\n                      box-sizing: border-box;\n              padding: 0;\n              vertical-align: middle;\n}\n.productList .product .choice-form .choice-group ul li span[data-v-438ffe92] {\n              vertical-align: middle;\n}\n.productList .product .form_button_container[data-v-438ffe92] {\n      text-align: right;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n}\n.productList .product .form_button_container .addButton[data-v-438ffe92] {\n        color: red;\n        padding: 5px 10px;\n        margin: 12px;\n        background: none;\n        border: none;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: #ffbe76;\n        border: 1px solid #ffbe76;\n        -webkit-box-shadow: 0px 0px 4px #00000040;\n                box-shadow: 0px 0px 4px #00000040;\n}\n.productList .activeProduct[data-v-438ffe92] {\n    color: black;\n    height: 200px;\n    background-size: cover;\n}\n.productList .activeProduct h5[data-v-438ffe92] {\n      color: white;\n      font-size: 18px;\n}\n.productList .activeProduct h4[data-v-438ffe92] {\n      color: black;\n}\n.productList .activeProduct p[data-v-438ffe92] {\n      max-height: none;\n      float: none;\n}\n.productList h4[data-v-438ffe92] {\n    margin-left: 5px;\n    margin-top: 6px;\n    margin-bottom: 0px;\n    text-shadow: 1px 1px 1px #c9c2c2;\n    font-weight: 300;\n    color: #9b9b9b;\n}\n.productList .product-description[data-v-438ffe92] {\n    font-size: 10px;\n    font-weight: 800;\n    padding: 3px 10px;\n    line-height: 1rem;\n    color: black;\n    overflow: scroll;\n    background-color: #ffffffcc;\n    border-radius: 3px;\n    max-height: 80px;\n    /* box-shadow: inset 0px 0px 1px #fff; */\n}\n.productList p[data-v-438ffe92] {\n    margin: 0;\n}\n", ""]);
+exports.push([module.i, "\n.cover[data-v-438ffe92] {\n  position: fixed;\n  height: 100vh;\n  background: #0000009c;\n  width: 100vw;\n  z-index: 600;\n  top: 0;\n  left: 0;\n}\nspan.orderQty[data-v-438ffe92] {\n  position: absolute;\n  background-color: #eb4d4b;\n  color: white;\n  border-radius: 50%;\n  width: 20px;\n  text-align: center;\n  height: 20px;\n  font-weight: 800;\n  line-height: 18px;\n  text-shadow: 1px 1px 1px black;\n  -webkit-box-shadow: inset 0px 0px 1px white;\n          box-shadow: inset 0px 0px 1px white;\n  z-index: 2;\n}\nspan.orderQty.activeOrderQty[data-v-438ffe92] {\n    bottom: 0;\n    left: 10px;\n    width: 40px;\n    height: 40px;\n    line-height: 38px;\n    font-size: 24px;\n}\nspan.orderQty.unactiveOrderQty[data-v-438ffe92] {\n    right: -15px;\n    top: -8px;\n}\n.productList[data-v-438ffe92] {\n  margin-top: 10vh;\n  margin-bottom: 9vh;\n  width: 70%;\n  padding-left: 12px;\n  background-color: #f1f1f1;\n  overflow: scroll;\n  height: 81vh;\n}\n.productList h4[data-v-438ffe92] {\n    height: 24px;\n    font-size: 20px;\n    font-weight: 600;\n    color: #333333;\n}\n.productList .product[data-v-438ffe92] {\n    color: #444444;\n    border-bottom: 3px solid white;\n    width: calc(100% - 7px);\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding-top: 4px;\n    padding-bottom: 4px;\n    padding-right: 9px;\n    margin-right: 7px;\n}\n.productList .product img[data-v-438ffe92] {\n      width: 20vw;\n      height: 7vh;\n      border-radius: 4px;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product img.activeimg[data-v-438ffe92] {\n        display: none;\n        border-radius: 8px;\n        width: 50%;\n        left: 25%;\n        top: 55%;\n        z-index: 10;\n        -webkit-box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n                box-shadow: 0px 2px 5px rgba(75, 73, 73, 0.6);\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .text-container[data-v-438ffe92] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      width: 80%;\n      margin: 0 auto;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      padding-left: 7px;\n}\n.productList .product .text-container.activeTextContainer[data-v-438ffe92] {\n        width: 95%;\n        z-index: 3;\n}\n.productList .product .text-container h5[data-v-438ffe92] {\n        height: 26px;\n        font-size: 10px;\n        color: #444444;\n        margin-bottom: 0px;\n        line-height: 26px;\n}\n.productList .product .text-container h5.activeH5[data-v-438ffe92] {\n          color: #fff;\n          font-size: 20px;\n          text-shadow: 2px 2px 6px #000;\n}\n.productList .product .text-container .price[data-v-438ffe92] {\n        margin: 0;\n        font-weight: 600;\n        font-size: 12px;\n        opacity: 0.9;\n        height: 15px;\n        line-height: 17px;\n        padding-right: 10px;\n        color: #333;\n}\n.productList .product .text-container .price.activePrice[data-v-438ffe92] {\n          font-weight: 700;\n}\n.productList .product .product-background[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 100%;\n      top: 0;\n      left: 0;\n      background: #00000038;\n      border-top-right-radius: 8px;\n      border-top-left-radius: 8px;\n}\n.productList .product .product-background-footer[data-v-438ffe92] {\n      width: 100%;\n      position: absolute;\n      height: 30px;\n      bottom: 0;\n      left: 0;\n      background: #ffffffc9;\n      border-bottom-right-radius: 8px;\n      border-bottom-left-radius: 8px;\n      z-index: 1;\n}\n.productList .product .button[data-v-438ffe92] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n}\n.productList .product .button img[data-v-438ffe92] {\n        width: 16px;\n        height: 16px;\n}\n.productList .product .button.active[data-v-438ffe92] {\n        bottom: 0px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .button.active.close-button[data-v-438ffe92] {\n          top: 0;\n          -webkit-transition: all 0.5s;\n          transition: all 0.5s;\n}\n.productList .product .button.unactive[data-v-438ffe92] {\n        top: 20px;\n        -webkit-transition: all 0.5s;\n        transition: all 0.5s;\n}\n.productList .product .choice-form[data-v-438ffe92] {\n      position: fixed;\n      z-index: 800;\n      width: 80%;\n      top: 30%;\n      left: 10%;\n      border-radius: 3px;\n      background-color: #c7eceef0;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.productList .product .choice-form .choice-form-title[data-v-438ffe92] {\n        font-size: 16px;\n        font-weight: bold;\n        color: #1e1e1e;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        padding: 2px 10px;\n}\n.productList .product .choice-form .choice-group[data-v-438ffe92] {\n        -webkit-box-shadow: 0px 2px 2px #00000094;\n                box-shadow: 0px 2px 2px #00000094;\n        padding: 8px;\n        border-radius: 3px;\n        background-color: #ffffff91;\n        min-height: 100px;\n        width: 80%;\n        margin: auto;\n        margin-top: 20px;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -ms-flex-pack: distribute;\n            justify-content: space-around;\n}\n.productList .product .choice-form .choice-group h4[data-v-438ffe92] {\n          font-size: 14px;\n          text-align: center;\n          margin: 0;\n          text-shadow: 1px 1px 1px #c9c2c2;\n          font-weight: bold;\n}\n.productList .product .choice-form .choice-group ul[data-v-438ffe92] {\n          list-style-type: none;\n          padding: 0;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          margin: 0;\n          margin-bottom: 4px;\n}\n.productList .product .choice-form .choice-group ul li[data-v-438ffe92] {\n            color: black;\n            vertical-align: middle;\n            font-size: 11px;\n}\n.productList .product .choice-form .choice-group ul li input[data-v-438ffe92] {\n              -webkit-box-sizing: border-box;\n                      box-sizing: border-box;\n              padding: 0;\n              vertical-align: middle;\n}\n.productList .product .choice-form .choice-group ul li span[data-v-438ffe92] {\n              vertical-align: middle;\n}\n.productList .product .form_button_container[data-v-438ffe92] {\n      text-align: right;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n}\n.productList .product .form_button_container .addButton[data-v-438ffe92] {\n        color: red;\n        padding: 5px 10px;\n        margin: 12px;\n        background: none;\n        border: none;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        background: #ffbe76;\n        border: 1px solid #ffbe76;\n        -webkit-box-shadow: 0px 0px 4px #00000040;\n                box-shadow: 0px 0px 4px #00000040;\n}\n.productList .activeProduct[data-v-438ffe92] {\n    color: black;\n    height: 200px;\n    background-size: cover;\n}\n.productList .activeProduct h5[data-v-438ffe92] {\n      color: white;\n      font-size: 18px;\n}\n.productList .activeProduct h4[data-v-438ffe92] {\n      color: black;\n}\n.productList .activeProduct p[data-v-438ffe92] {\n      max-height: none;\n      float: none;\n}\n.productList .product-description[data-v-438ffe92] {\n    font-size: 10px;\n    font-weight: 800;\n    padding: 3px 10px;\n    line-height: 1rem;\n    color: black;\n    overflow: scroll;\n    background-color: #ffffffcc;\n    border-radius: 3px;\n    max-height: 80px;\n    /* box-shadow: inset 0px 0px 1px #fff; */\n}\n.productList p[data-v-438ffe92] {\n    margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -67704,7 +67704,7 @@ var render = function() {
                 _c("transition", [
                   _vm.table_number || _vm.app_conf.preorder
                     ? _c(
-                        "button",
+                        "div",
                         {
                           staticClass: "button",
                           class: {
@@ -67718,9 +67718,13 @@ var render = function() {
                           }
                         },
                         [
-                          _c("i", { staticClass: "material-icons" }, [
-                            _vm._v("add")
-                          ])
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/table/public/images/layout/plus_button.png",
+                              alt: ""
+                            }
+                          })
                         ]
                       )
                     : _vm._e()
@@ -67818,7 +67822,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.cover[data-v-c86466da] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background-color: #0000009c;\n  z-index: -1;\n}\n.close-btn-wrap[data-v-c86466da] {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.shoppingCart[data-v-c86466da] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  left: 0;\n  z-index: 200;\n  -webkit-box-shadow: 0px -5px 5px #00000038;\n          box-shadow: 0px -5px 5px #00000038;\n}\n.shoppingCart .shoppingCart-header[data-v-c86466da] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    height: 40px;\n    background-color: #eb4d4b;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header.expandHeader[data-v-c86466da] {\n      background-color: #eb4d4b;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header .shoppingIcon[data-v-c86466da] {\n      display: inline-block;\n      -webkit-transform: scale(1.6);\n              transform: scale(1.6);\n      width: 26px;\n      height: 20px;\n      z-index: 250;\n      position: absolute;\n      top: 10px;\n      left: 14px;\n}\n.shoppingCart .shoppingCart-header .badge[data-v-c86466da] {\n      display: inline-block;\n      border-radius: 50%;\n      color: #f8fafc;\n      text-shadow: 1px 1px 2px black;\n      position: absolute;\n      top: -4px;\n      left: 3px;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text[data-v-c86466da] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-weight: 600;\n      font-size: 18px;\n      color: white;\n      text-shadow: 1px 1px 2px black;\n      letter-spacing: 1.2px;\n}\n.shoppingCart .shoppingCart-header img[data-v-c86466da] {\n      max-width: 60px;\n}\n.shoppingCart ul[data-v-c86466da] {\n    list-style-type: none;\n    padding: 0px 2px;\n    max-height: 300px;\n    overflow: scroll;\n    background-color: white;\n    margin: 0;\n    padding-bottom: 50px;\n}\n.shoppingCart ul li[data-v-c86466da] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      margin-bottom: 5px;\n}\n.shoppingCart ul li .shoppingCart-item-name[data-v-c86466da] {\n        -webkit-box-flex: 4;\n            -ms-flex: 4;\n                flex: 4;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-name[data-v-c86466da] {\n          margin: 0;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-choice[data-v-c86466da] {\n          margin: 0;\n          font-size: 10px;\n          color: #9d9a9a;\n}\n.shoppingCart ul li .shoppingCart-button-group[data-v-c86466da] {\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n        text-align: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container[data-v-c86466da] {\n          border: 1px solid #dff9fb;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: start;\n              -ms-flex-align: start;\n                  align-items: flex-start;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          justify-items: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container span[data-v-c86466da] {\n            font-size: 16px;\n            font-weight: bold;\n            display: inline-block;\n            text-align: center;\n}\n.shoppingCart ul li .shoppingCart-item-price[data-v-c86466da] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        text-align: right;\n        padding-right: 10px;\n}\n.shoppingCart .shoppingCart-confirm-button[data-v-c86466da] {\n    width: 190px;\n    position: fixed;\n    height: 30px;\n    bottom: 3%;\n    left: calc(50% - 95px);\n    border: none;\n    background-color: #ffc24a;\n    color: #fff;\n    font-size: 16px;\n    letter-spacing: 0.6px;\n    font-weight: 900;\n    text-shadow: 1px 1px 2px black;\n    -webkit-box-shadow: 0px 5px 5px #00000038;\n            box-shadow: 0px 5px 5px #00000038;\n    border-radius: 8px;\n}\n.expand[data-v-c86466da] {\n  width: 100%;\n  left: 0;\n  bottom: 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\ni.material-icons[data-v-c86466da] {\n  color: white;\n  text-shadow: 0px 0px 1px black;\n  font-size: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.cart-item[data-v-c86466da] {\n  min-height: 60px;\n}\n.cover[data-v-c86466da] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background-color: #0000009c;\n  z-index: -1;\n}\n.close-btn-wrap[data-v-c86466da] {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.shoppingCart[data-v-c86466da] {\n  position: fixed;\n  bottom: 0;\n  width: 100vw;\n  left: 0;\n  z-index: 200;\n}\n.shoppingCart .shoppingCart-header[data-v-c86466da] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    width: 100%;\n    height: 8.5vh;\n    background-color: #f55747;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header.expandHeader[data-v-c86466da] {\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header .shoppingIcon[data-v-c86466da] {\n      width: 26px;\n      height: 20px;\n      z-index: 250;\n}\n.shoppingCart .shoppingCart-header .badge[data-v-c86466da] {\n      border-radius: 50%;\n      color: #f8fafc;\n      text-shadow: 1px 1px 2px black;\n      position: absolute;\n      top: -4px;\n      left: 3px;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text[data-v-c86466da] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-weight: 600;\n      font-size: 18px;\n      color: white;\n      text-shadow: 1px 1px 2px black;\n      letter-spacing: 1.2px;\n}\n.shoppingCart ul[data-v-c86466da] {\n    list-style-type: none;\n    padding: 0px 2px;\n    max-height: 300px;\n    overflow: scroll;\n    background-color: white;\n    margin: 0;\n    padding-bottom: 50px;\n}\n.shoppingCart ul li[data-v-c86466da] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      margin-bottom: 5px;\n}\n.shoppingCart ul li .shoppingCart-item-name[data-v-c86466da] {\n        -webkit-box-flex: 4;\n            -ms-flex: 4;\n                flex: 4;\n        padding-top: 10px;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-name[data-v-c86466da] {\n          margin: 0;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-choice[data-v-c86466da] {\n          margin: 0;\n          font-size: 10px;\n          color: #9d9a9a;\n}\n.shoppingCart ul li .shoppingCart-button-group[data-v-c86466da] {\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n        text-align: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container[data-v-c86466da] {\n          border: 1px solid #dff9fb;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: start;\n              -ms-flex-align: start;\n                  align-items: flex-start;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          justify-items: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container span[data-v-c86466da] {\n            font-size: 16px;\n            font-weight: bold;\n            display: inline-block;\n            text-align: center;\n}\n.shoppingCart ul li .shoppingCart-item-price[data-v-c86466da] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        text-align: right;\n        padding-right: 10px;\n}\n.shoppingCart .shoppingCart-confirm-button[data-v-c86466da] {\n    width: 190px;\n    position: fixed;\n    height: 30px;\n    bottom: 3%;\n    left: calc(50% - 95px);\n    border: none;\n    background-color: #ffc24a;\n    color: #fff;\n    font-size: 16px;\n    letter-spacing: 0.6px;\n    font-weight: 900;\n    text-shadow: 1px 1px 2px black;\n    -webkit-box-shadow: 0px 5px 5px #00000038;\n            box-shadow: 0px 5px 5px #00000038;\n    border-radius: 8px;\n}\n.expand[data-v-c86466da] {\n  width: 100%;\n  left: 0;\n  bottom: 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\ni.material-icons[data-v-c86466da] {\n  color: white;\n  text-shadow: 0px 0px 1px black;\n  font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -67996,7 +68000,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.cart-item[data-v-7f6ae384] {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  overflow: scroll;\n  margin: 2px 0px;\n  border-bottom: 1px solid #e4e0e0;\n}\n.decrease-button[data-v-7f6ae384] {\n  background-color: #eb4d4b;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  color: white;\n}\n.increase-button[data-v-7f6ae384] {\n  background-color: #eb4d4b;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n  color: white;\n}\nul[data-v-7f6ae384] {\n  list-style-type: none;\n  padding: 0;\n  overflow: scroll;\n}\nul li[data-v-7f6ae384] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    margin-bottom: 5px;\n    overflow: scroll;\n}\nul li .shoppingCart-item-name[data-v-7f6ae384] {\n      -webkit-box-flex: 4;\n          -ms-flex: 4;\n              flex: 4;\n      overflow: scroll;\n      padding-left: 2px;\n}\nul li .shoppingCart-item-name .orderItem-name[data-v-7f6ae384] {\n        margin: 0;\n        font-size: 14px;\n        font-weight: bold;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        overflow: scroll;\n}\nul li .shoppingCart-item-name .orderItem-name .orderItem-quantity[data-v-7f6ae384] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\nul li .shoppingCart-item-name .orderItem-name .orderItem-name-text[data-v-7f6ae384] {\n          -webkit-box-flex: 4;\n              -ms-flex: 4;\n                  flex: 4;\n}\nul li .shoppingCart-item-name .orderItem-choice[data-v-7f6ae384] {\n        margin: 0;\n        font-size: 10px;\n        color: #9d9a9a;\n        overflow: scroll;\n}\nul li .shoppingCart-item-price[data-v-7f6ae384] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      text-align: right;\n      padding-right: 10px;\n}\nspan.orderItem-quantity[data-v-7f6ae384] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-shadow: inset 0px 0px 1px black;\n          box-shadow: inset 0px 0px 1px black;\n}\n.shoppingCart-confirm-button[data-v-7f6ae384] {\n  width: 100%;\n  border: none;\n  background-color: #f6e58d;\n  color: #f0932b;\n  font-weight: bold;\n  -webkit-box-shadow: 0px -1px 3px #00000045;\n          box-shadow: 0px -1px 3px #00000045;\n}\n.expand[data-v-7f6ae384] {\n  max-height: 40px;\n}\n", ""]);
+exports.push([module.i, "\n.cart-item[data-v-7f6ae384] {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  overflow: scroll;\n  margin: 2px 0px;\n  min-height: 60px;\n  border-bottom: 1px solid #e4e0e0;\n}\n.quantity-wrap[data-v-7f6ae384] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 70px;\n}\n.quantity-wrap .decrease-button[data-v-7f6ae384],\n  .quantity-wrap .increase-button[data-v-7f6ae384],\n  .quantity-wrap .orderItem-quantity[data-v-7f6ae384] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.quantity-wrap .orderItem-quantity[data-v-7f6ae384] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.quantity-wrap .orderItem-quantity .number[data-v-7f6ae384] {\n      height: 22px;\n      line-height: 22px;\n      font-size: 18px;\n      font-weight: 600;\n      color: #f55747;\n}\nul[data-v-7f6ae384] {\n  list-style-type: none;\n  padding: 0;\n  overflow: scroll;\n}\nul li[data-v-7f6ae384] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    margin-bottom: 5px;\n    overflow: scroll;\n}\nul li .shoppingCart-item-name[data-v-7f6ae384] {\n      -webkit-box-flex: 4;\n          -ms-flex: 4;\n              flex: 4;\n      overflow: scroll;\n      padding-left: 2px;\n}\nul li .shoppingCart-item-name .orderItem-name[data-v-7f6ae384] {\n        margin: 0;\n        font-size: 14px;\n        font-weight: bold;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        overflow: scroll;\n}\nul li .shoppingCart-item-name .orderItem-name .orderItem-quantity[data-v-7f6ae384] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\nul li .shoppingCart-item-name .orderItem-name .orderItem-name-text[data-v-7f6ae384] {\n          -webkit-box-flex: 4;\n              -ms-flex: 4;\n                  flex: 4;\n          margin-top: 5px;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n                  justify-content: space-between;\n          padding-right: 15px;\n}\nul li .shoppingCart-item-name .orderItem-choice[data-v-7f6ae384] {\n        margin: 0;\n        font-size: 10px;\n        color: #9d9a9a;\n        overflow: scroll;\n}\nul li .shoppingCart-item-price[data-v-7f6ae384] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      text-align: right;\n      padding-right: 10px;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n}\nul li .shoppingCart-item-price span[data-v-7f6ae384] {\n        height: 15px;\n        opacity: 0.9;\n        font-size: 12px;\n        font-weight: 500;\n        color: #333333;\n}\n.shoppingCart-confirm-button[data-v-7f6ae384] {\n  width: 100%;\n  border: none;\n  background-color: #f6e58d;\n  color: #f0932b;\n  font-weight: bold;\n  -webkit-box-shadow: 0px -1px 3px #00000045;\n          box-shadow: 0px -1px 3px #00000045;\n}\n.expand[data-v-7f6ae384] {\n  max-height: 40px;\n}\n", ""]);
 
 // exports
 
@@ -68010,6 +68014,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68069,7 +68082,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
     }
 
-    this.totalPrice = (this.orderItem.quantity * (parseFloat(this.orderItem.item.price) + optionPrice)).toFixed(2);
+    this.totalPrice = (parseFloat(this.orderItem.item.price) + optionPrice).toFixed(2);
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["increaseItemQuantityInOrderList", "decreaseItemQuantityInOrderList", "removeItemQuantityFromOrderList"]), {
@@ -68106,7 +68119,9 @@ var render = function() {
     _c("span", { staticClass: "shoppingCart-item-name" }, [
       _c("p", { staticClass: "orderItem-name" }, [
         _c("span", { staticClass: "orderItem-name-text" }, [
-          _vm._v(_vm._s(_vm.orderItem.item.name))
+          _c("span", [_vm._v(_vm._s(_vm.orderItem.item.name))]),
+          _vm._v(" "),
+          _c("span", [_vm._v("$" + _vm._s(_vm.totalPrice))])
         ])
       ]),
       _vm._v(" "),
@@ -68123,7 +68138,7 @@ var render = function() {
                       _vm._s(choice.type) +
                         " : " +
                         _vm._s(choice.pickedChoice) +
-                        " " +
+                        " $" +
                         _vm._s(choice.price)
                     )
                   ]
@@ -68155,28 +68170,7 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
-    _c("span", { staticClass: "shoppingCart-item-price" }, [
-      _vm._v(_vm._s(_vm.totalPrice))
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "quantity-wrap" }, [
-      _c(
-        "span",
-        {
-          staticClass: "increase-button",
-          on: {
-            click: function($event) {
-              _vm.increase()
-            }
-          }
-        },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("add")])]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "orderItem-quantity" }, [
-        _vm._v(_vm._s(_vm.orderItem.quantity))
-      ]),
-      _vm._v(" "),
       _c(
         "span",
         {
@@ -68187,8 +68181,43 @@ var render = function() {
             }
           }
         },
-        [_c("i", { staticClass: "material-icons" }, [_vm._v("remove")])]
+        [
+          _c("img", {
+            attrs: { src: "/table/public/images/layout/cart_sub.png", alt: "" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _c("span", { staticClass: "orderItem-quantity" }, [
+        _c("span", { staticClass: "number" }, [
+          _vm._v(_vm._s(_vm.orderItem.quantity))
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "increase-button",
+          on: {
+            click: function($event) {
+              _vm.increase()
+            }
+          }
+        },
+        [
+          _c("img", {
+            attrs: { src: "/table/public/images/layout/cart_plus.png", alt: "" }
+          })
+        ]
       )
+    ]),
+    _vm._v(" "),
+    _c("span", { staticClass: "shoppingCart-item-price" }, [
+      _c("span", [
+        _vm._v(
+          "$" + _vm._s((_vm.totalPrice * _vm.orderItem.quantity).toFixed(2))
+        )
+      ])
     ])
   ])
 }
@@ -68416,9 +68445,12 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "shoppingIcon" }, [
-              _c("i", { staticClass: "material-icons" }, [
-                _vm._v("shopping_cart")
-              ]),
+              _c("img", {
+                attrs: {
+                  src: "/table/public/images/layout/shopping_cart.png",
+                  alt: ""
+                }
+              }),
               _vm._v(" "),
               _c("span", { staticClass: "badge" }, [
                 _vm._v(_vm._s(_vm.totalQuantityOfOrder))
@@ -68541,7 +68573,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-611e54cb] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  height: 8%;\n  display: flex;\n  justify-content: space-between;\n  background-color: #eb4d4b;\n  color: #f8fafc;\n  -webkit-box-shadow: 0px 5px 5px #00000038;\n          box-shadow: 0px 5px 5px #00000038;\n  z-index: 200;\n}\n.wrapper[data-v-611e54cb] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-flex: 6;\n      -ms-flex: 6;\n          flex: 6;\n}\nh2[data-v-611e54cb] {\n  text-align: center;\n  font-weight: bold;\n  text-shadow: 2px 2px 6px #000;\n}\n\n/*language switch button :yin_yang:*/\n.languageSwitchButtonGroup[data-v-611e54cb] {\n  text-align: right;\n  background-color: #ffc24a;\n  color: black;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.languageSwitchButtonGroup .button-wrapper[data-v-611e54cb] {\n    text-align: center;\n    font-size: 22px;\n}\n.languageSwitchButtonGroup .languageButton[data-v-611e54cb] {\n    color: white;\n    font-weight: 500;\n    text-shadow: 1px 1px 3px black;\n}\n.languageSwitchButtonGroup .languageButton.languageButtonInactive[data-v-611e54cb] {\n      background-color: #933b38;\n      padding: 0px 5px;\n      -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5);\n              box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5);\n}\n", ""]);
+exports.push([module.i, "\n.header[data-v-611e54cb] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100vw;\n  height: 10vh;\n  display: flex;\n  justify-content: space-between;\n  background-image: url(\"/table/public/images/banner.png\");\n  background-size: cover;\n  color: #fff;\n  z-index: 200;\n  border-bottom: 3px solid white;\n  /*language switch button :yin_yang:*/\n}\n.header .wrapper[data-v-611e54cb] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-flex: 6;\n        -ms-flex: 6;\n            flex: 6;\n}\n.header .wrapper h2[data-v-611e54cb] {\n      font-weight: bold;\n      font-size: 32px;\n      text-transform: uppercase;\n      margin: 0;\n      margin-top: 3px;\n      margin-left: 20px;\n}\n.header .languageSwitchButtonGroup[data-v-611e54cb] {\n    text-align: right;\n    color: black;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n}\n.header .languageSwitchButtonGroup .button-wrapper[data-v-611e54cb] {\n      text-align: center;\n      width: 24px;\n      height: 24px;\n      border-radius: 3px;\n      border: 1px solid #fff;\n      margin-top: 3px;\n}\n.header .languageSwitchButtonGroup .languageButton[data-v-611e54cb] {\n      color: white;\n      font-weight: 500;\n      font-size: 14px;\n      height: 20px;\n}\n", ""]);
 
 // exports
 
@@ -68555,16 +68587,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -69720,7 +69742,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.cover[data-v-411d9a3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background-color: #0000009c;\n  z-index: -1;\n}\n.close-btn-wrap[data-v-411d9a3e] {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.shoppingCart[data-v-411d9a3e] {\n  position: fixed;\n  bottom: 0;\n  width: 100%;\n  left: 0;\n  z-index: 200;\n  -webkit-box-shadow: 0px -5px 5px #00000038;\n          box-shadow: 0px -5px 5px #00000038;\n}\n.shoppingCart .shoppingCart-header[data-v-411d9a3e] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    height: 40px;\n    background-color: #eb4d4b;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header.expandHeader[data-v-411d9a3e] {\n      background-color: #eb4d4b;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header .shoppingIcon[data-v-411d9a3e] {\n      display: inline-block;\n      -webkit-transform: scale(1.6);\n              transform: scale(1.6);\n      width: 26px;\n      height: 20px;\n      z-index: 250;\n      position: absolute;\n      top: 10px;\n      left: 14px;\n}\n.shoppingCart .shoppingCart-header .badge[data-v-411d9a3e] {\n      display: inline-block;\n      border-radius: 50%;\n      color: #f8fafc;\n      text-shadow: 1px 1px 2px black;\n      position: absolute;\n      top: -4px;\n      left: 3px;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text[data-v-411d9a3e] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-weight: 600;\n      font-size: 18px;\n      color: white;\n      text-shadow: 1px 1px 2px black;\n      letter-spacing: 1.2px;\n}\n.shoppingCart .shoppingCart-header img[data-v-411d9a3e] {\n      max-width: 60px;\n}\n.shoppingCart ul[data-v-411d9a3e] {\n    list-style-type: none;\n    padding: 0px 2px;\n    max-height: 300px;\n    overflow: scroll;\n    background-color: white;\n    margin: 0;\n    padding-bottom: 50px;\n}\n.shoppingCart ul li[data-v-411d9a3e] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      margin-bottom: 5px;\n}\n.shoppingCart ul li .shoppingCart-item-name[data-v-411d9a3e] {\n        -webkit-box-flex: 4;\n            -ms-flex: 4;\n                flex: 4;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-name[data-v-411d9a3e] {\n          margin: 0;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-choice[data-v-411d9a3e] {\n          margin: 0;\n          font-size: 10px;\n          color: #9d9a9a;\n}\n.shoppingCart ul li .shoppingCart-button-group[data-v-411d9a3e] {\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n        text-align: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container[data-v-411d9a3e] {\n          border: 1px solid #dff9fb;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: start;\n              -ms-flex-align: start;\n                  align-items: flex-start;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          justify-items: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container span[data-v-411d9a3e] {\n            font-size: 16px;\n            font-weight: bold;\n            display: inline-block;\n            text-align: center;\n}\n.shoppingCart ul li .shoppingCart-item-price[data-v-411d9a3e] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        text-align: right;\n        padding-right: 10px;\n}\n.shoppingCart .shoppingCart-confirm-button[data-v-411d9a3e] {\n    width: 190px;\n    position: fixed;\n    height: 30px;\n    bottom: 3%;\n    left: calc(50% - 95px);\n    border: none;\n    background-color: #ffc24a;\n    color: #fff;\n    font-size: 16px;\n    letter-spacing: 0.6px;\n    font-weight: 900;\n    text-shadow: 1px 1px 2px black;\n    -webkit-box-shadow: 0px 5px 5px #00000038;\n            box-shadow: 0px 5px 5px #00000038;\n    border-radius: 8px;\n}\n.expand[data-v-411d9a3e] {\n  width: 100%;\n  left: 0;\n  bottom: 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\ni.material-icons[data-v-411d9a3e] {\n  color: white;\n  text-shadow: 0px 0px 1px black;\n  font-size: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.cover[data-v-411d9a3e] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  height: 100vh;\n  width: 100vw;\n  background-color: #0000009c;\n  z-index: -1;\n}\n.close-btn-wrap[data-v-411d9a3e] {\n  position: absolute;\n  right: 10px;\n  top: 10px;\n}\n.shoppingCart[data-v-411d9a3e] {\n  position: fixed;\n  bottom: 0;\n  width: 100vw;\n  left: 0;\n  z-index: 200;\n}\n.shoppingCart .shoppingCart-header[data-v-411d9a3e] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    position: relative;\n    width: 100%;\n    height: 8.5vh;\n    background-color: #f55747;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n    padding-bottom: 10px;\n}\n.shoppingCart .shoppingCart-header.expandHeader[data-v-411d9a3e] {\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.shoppingCart .shoppingCart-header .shoppingIcon[data-v-411d9a3e] {\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      z-index: 250;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: vertical;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: column;\n              flex-direction: column;\n      -webkit-box-pack: end;\n          -ms-flex-pack: end;\n              justify-content: flex-end;\n      padding-left: 30px;\n}\n.shoppingCart .shoppingCart-header .shoppingIcon img[data-v-411d9a3e] {\n        width: 33px;\n        height: 30px;\n}\n.shoppingCart .shoppingCart-header .badge[data-v-411d9a3e] {\n      border-radius: 50%;\n      position: absolute;\n      top: 9px;\n      left: 49px;\n      width: 20px;\n      height: 20px;\n      line-height: 20px;\n      font-size: 16.2px;\n      font-weight: 600;\n      padding: 0;\n      color: #f55747;\n      background-color: white;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text[data-v-411d9a3e] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      font-weight: 600;\n      font-size: 18px;\n      color: white;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      padding-right: 12px;\n      padding-bottom: 3px;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text .text-wrapper[data-v-411d9a3e] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-orient: vertical;\n        -webkit-box-direction: normal;\n            -ms-flex-direction: column;\n                flex-direction: column;\n        -webkit-box-pack: end;\n            -ms-flex-pack: end;\n                justify-content: flex-end;\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text .text-wrapper .text[data-v-411d9a3e] {\n          height: 18px;\n          font-size: 14px;\n          font-weight: 300;\n          color: #ffffff;\n          text-align: right;\n          padding-right: 10px;\n}\n.shoppingCart .shoppingCart-header .shoppingCart-header-text .text-wrapper .number[data-v-411d9a3e] {\n          height: 29px;\n          font-size: 24px;\n          font-weight: bold;\n          color: #ffffff;\n}\n.shoppingCart ul[data-v-411d9a3e] {\n    list-style-type: none;\n    padding: 0px 2px;\n    min-height: 60vh;\n    max-height: 80vh;\n    overflow: scroll;\n    background-color: white;\n    margin: 0;\n    padding-bottom: 15vh;\n}\n.shoppingCart ul li[data-v-411d9a3e] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-orient: horizontal;\n      -webkit-box-direction: normal;\n          -ms-flex-direction: row;\n              flex-direction: row;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      margin-bottom: 5px;\n}\n.shoppingCart ul li .shoppingCart-item-name[data-v-411d9a3e] {\n        -webkit-box-flex: 4;\n            -ms-flex: 4;\n                flex: 4;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-name[data-v-411d9a3e] {\n          margin: 0;\n}\n.shoppingCart ul li .shoppingCart-item-name .orderItem-choice[data-v-411d9a3e] {\n          margin: 0;\n          font-size: 10px;\n          color: #9d9a9a;\n}\n.shoppingCart ul li .shoppingCart-button-group[data-v-411d9a3e] {\n        -webkit-box-flex: 2;\n            -ms-flex: 2;\n                flex: 2;\n        text-align: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container[data-v-411d9a3e] {\n          border: 1px solid #dff9fb;\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: start;\n              -ms-flex-align: start;\n                  align-items: flex-start;\n          -ms-flex-pack: distribute;\n              justify-content: space-around;\n          justify-items: center;\n}\n.shoppingCart ul li .shoppingCart-button-group .button-group-container span[data-v-411d9a3e] {\n            font-size: 16px;\n            font-weight: bold;\n            display: inline-block;\n            text-align: center;\n}\n.shoppingCart ul li .shoppingCart-item-price[data-v-411d9a3e] {\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n        text-align: right;\n        padding-right: 10px;\n}\n.shoppingCart .button-pannel[data-v-411d9a3e] {\n    width: 100vw;\n    background-color: white;\n    height: 15vh;\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.shoppingCart .button-pannel .shoppingCart-confirm-button[data-v-411d9a3e] {\n      width: 212px;\n      height: 35px;\n      border-radius: 3px;\n      background-color: #ffba2d;\n      margin: auto;\n      font-size: 14px;\n      font-weight: 600;\n      color: #ffffff;\n      text-align: center;\n      line-height: 35px;\n}\n.expand[data-v-411d9a3e] {\n  width: 100%;\n  left: 0;\n  bottom: 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\ni.material-icons[data-v-411d9a3e] {\n  color: white;\n  text-shadow: 0px 0px 1px black;\n  font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -69740,6 +69762,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_simplestorage_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_simplestorage_js__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
 //
 //
 //
@@ -69858,7 +69883,9 @@ var render = function() {
       "div",
       { staticClass: "shoppingCart", class: { expand: _vm.isExpand } },
       [
-        _vm.isExpand ? _c("div", { staticClass: "cover" }) : _vm._e(),
+        _vm.isExpand
+          ? _c("div", { staticClass: "cover", on: { click: _vm.toggle } })
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "div",
@@ -69869,9 +69896,12 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "shoppingIcon" }, [
-              _c("i", { staticClass: "material-icons" }, [
-                _vm._v("shopping_cart")
-              ]),
+              _c("img", {
+                attrs: {
+                  src: "/table/public/images/layout/shopping_cart.png",
+                  alt: ""
+                }
+              }),
               _vm._v(" "),
               _c("span", { staticClass: "badge" }, [
                 _vm._v(_vm._s(_vm.totalQuantityOfOrder))
@@ -69879,31 +69909,18 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "shoppingCart-header-text" }, [
-              _vm._v(
-                _vm._s(_vm.app_conf.total) +
-                  " " +
-                  _vm._s(_vm.app_conf.currency) +
-                  " $" +
-                  _vm._s(_vm.totalPriceOfOrder)
-              )
-            ]),
-            _vm._v(" "),
-            _vm.isExpand
-              ? _c(
-                  "div",
-                  { staticClass: "close-btn-wrap", on: { click: _vm.toggle } },
-                  [
-                    _c(
-                      "i",
-                      {
-                        staticClass: "material-icons",
-                        on: { click: _vm.toggle }
-                      },
-                      [_vm._v("close")]
-                    )
-                  ]
-                )
-              : _vm._e()
+              _c("span", { staticClass: "text-wrapper" }, [
+                _c("span", { staticClass: "text" }, [
+                  _vm._v(_vm._s(_vm.app_conf.total))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-wrapper" }, [
+                _c("span", { staticClass: "number" }, [
+                  _vm._v("$" + _vm._s(_vm.totalPriceOfOrder))
+                ])
+              ])
+            ])
           ]
         ),
         _vm._v(" "),
@@ -69926,14 +69943,16 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _vm.isExpand
-          ? _c(
-              "button",
-              {
-                staticClass: "shoppingCart-confirm-button",
-                on: { click: _vm.confirmOrder }
-              },
-              [_vm._v(_vm._s(_vm.app_conf.confirm_order))]
-            )
+          ? _c("div", { staticClass: "button-pannel" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "shoppingCart-confirm-button",
+                  on: { click: _vm.confirmOrder }
+                },
+                [_vm._v(_vm._s(_vm.app_conf.confirm_order))]
+              )
+            ])
           : _vm._e()
       ]
     )
