@@ -65,12 +65,13 @@ export default {
       "cdt",
       "v",
       "app_conf",
-      "lang"
+      "lang",
+      "preorder"
     ])
   },
   mounted() {
     this.delay(1000).then(res => {
-      if (!this.app_conf.preorder) {
+      if (!this.preorder) {
         this.updateOrderList();
       } else {
         const newList = localStorage.getItem("preorderList");
@@ -105,7 +106,7 @@ export default {
     },
     //ToDo:: save data in database.
     confirmOrder() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.$router.push(`/table/public/confirm`);
       } else {
         this.$router.push(
@@ -124,7 +125,7 @@ export default {
           v: this.v,
           table_id: this.table_number,
           lang: this.lang,
-          preorder: this.app_conf.preorder
+          preorder: this.preorder
         })
         .then(res => {
           this.replaceList(res.data);

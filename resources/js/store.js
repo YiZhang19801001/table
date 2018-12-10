@@ -16,6 +16,7 @@ export default {
         cdt: "",
         v: "",
         site: 0,
+        preorder: false,
         //ToDo: store_id, store_name, store_url should be generated automaticly.
         store_id: 4,
         store_name: "Monkey King Thai Restaurant",
@@ -24,6 +25,9 @@ export default {
         app_conf: {}
     },
     getters: {
+        preorder: state => {
+            return state.preorder;
+        },
         isConfirmed: state => {
             return state.isConfirmed;
         },
@@ -110,6 +114,9 @@ export default {
         }
     },
     mutations: {
+        updatePreorder(state, payload) {
+            state.preorder = payload;
+        },
         updateIsConfirmed(state, payload) {
             state.isConfirmed = payload;
         },
@@ -139,7 +146,7 @@ export default {
             });
         },
         updateOrderList(state, payload) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 state.orderList = JSON.parse(payload);
             } else {
                 state.orderList = payload.pending_list;
@@ -150,7 +157,7 @@ export default {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
             console.log("add new item to order list @param payload", payload);
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 let flag = false;
                 for (let i = 0; i < state.orderList.length; i++) {
                     if (
@@ -222,7 +229,7 @@ export default {
             }
         },
         IncreaseItemQuantityInOrderList(state, newItem) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 state.orderList[newItem].quantity++;
                 localStorage.setItem(
                     "preorderList",
@@ -237,7 +244,7 @@ export default {
         },
         RemoveItemFromOrderList(state, newItem) {
             state.orderList.splice(state.orderList.indexOf(newItem), 1);
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 localStorage.setItem(
                     "preorderList",
                     JSON.stringify(state.orderList)
@@ -254,7 +261,7 @@ export default {
             state.table_number = payload;
         },
         decreaseQuantity(state, payload) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 if (state.orderList[payload].quantity > 1) {
                     state.orderList[payload].quantity--;
                 } else {
@@ -285,6 +292,9 @@ export default {
     },
 
     actions: {
+        setPreorder(context, status) {
+            context.commit("updatePreorder", status);
+        },
         setIsConfirmed(context, status) {
             context.commit("updateIsConfirmed", status);
         },

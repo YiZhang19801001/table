@@ -54,7 +54,7 @@
         <transition>
           <button
             class="button"
-            v-if="table_number || app_conf.preorder"
+            v-if="table_number || preorder"
             v-bind:class="{active:item.product_id===selectProduct_id,unactive:item.product_id!==selectProduct_id}"
             @click="wandOrder(item)"
           >
@@ -108,7 +108,8 @@ export default {
       "scrollPositionId",
       "app_conf",
       "table_number",
-      "historyOrderList"
+      "historyOrderList",
+      "preorder"
     ])
   },
   watch: {

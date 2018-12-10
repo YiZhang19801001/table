@@ -37,7 +37,8 @@ export default {
       "lang",
       "table_number",
       "pathFrom",
-      "app_conf"
+      "app_conf",
+      "preorder"
     ])
   },
   mounted() {
@@ -64,7 +65,7 @@ export default {
           v: this.v,
           table_id: this.table_number,
           lang: this.lang,
-          preorder: this.app_conf.preorder
+          preorder: this.preorder
         })
         .then(res => {
           this.replaceList(res.data);

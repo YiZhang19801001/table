@@ -1,23 +1,13 @@
 <template>
   <div class="header">
     <div class="wrapper">
-      <h2>{{app_conf.preorder? app_conf.preorder_title:app_conf.app_header_title + table_number}}</h2>
+      <h2>{{preorder? app_conf.preorder_title:app_conf.app_header_title + table_number}}</h2>
     </div>
 
     <div class="languageSwitchButtonGroup">
       <span class="button-wrapper">
-        <span
-          v-if="lang==2"
-          @click="setToCN"
-          class="languageButton"
-
-        >{{app_conf.lang_switch_cn}}</span>
-        <span
-          v-if="lang==1"
-          @click="setToEN"
-          class="languageButton"
-
-        >{{app_conf.lang_switch_en}}</span>
+        <span v-if="lang==2" @click="setToCN" class="languageButton">{{app_conf.lang_switch_cn}}</span>
+        <span v-if="lang==1" @click="setToEN" class="languageButton">{{app_conf.lang_switch_en}}</span>
       </span>
     </div>
   </div>
@@ -27,7 +17,14 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["table_number", "app_conf", "lang", "pathFrom"])
+    ...mapGetters([
+      "table_number",
+      "app_conf",
+      "lang",
+      "pathFrom",
+      "preorder",
+      "preorder"
+    ])
   },
   methods: {
     ...mapActions(["setLang"]),

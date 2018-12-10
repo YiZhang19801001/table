@@ -54,7 +54,8 @@ export default {
       "totalQuantityOfOrder",
       "orderId",
       "table_number",
-      "app_conf"
+      "app_conf",
+      "preorder"
     ])
   },
   mounted() {
@@ -81,14 +82,14 @@ export default {
       this.isExpand = !this.isExpand;
     },
     increase() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.increaseItemQuantityInOrderList(this.index);
       } else {
         this.increaseItemQuantityInOrderList(this.orderItem);
       }
     },
     decrease() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.decreaseItemQuantityInOrderList(this.index);
       } else {
         this.decreaseItemQuantityInOrderList(this.orderItem);

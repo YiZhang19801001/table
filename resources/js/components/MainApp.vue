@@ -49,21 +49,35 @@ export default {
     this.setTableNumber(this.$route.params.table);
     this.setCdt(this.$route.query.cdt);
     this.setV(this.$route.query.v);
+    console.log(this.$route.path);
     if (localStorage.language_id) {
       this.setLang(localStorage.language_id);
     }
     this.setAppConfig();
 
     this.delay(1000).then(res => {
-      if (this.app_conf.preorder && !localStorage.getItem("preorderList")) {
-        this.$router.push(`/table/public/preorder`);
+      const myPath = this.$route.path;
+      if (myPath === "/table/public/preorder" && this.app_conf.preorder) {
+        if (localStorage.getItem("preorderList")) {
+          this.$router.push(`/table/public/confirm`);
+          this.setPreorder(true);
+        } else {
+          this.$router.push(`/table/public/preorder`);
+          this.setPreorder(true);
+        }
       } else if (
-        this.app_conf.preorder &&
-        this.$route.path === "/table/public/"
+        myPath === "/table/public/preorder" &&
+        !this.app_conf.preorder
       ) {
-        this.$router.push(`/table/public/confirm`);
-      } else if (this.app_conf.preorder) {
-        this.$router.push(`/table/public/preorder`);
+        this.$router.push("/table/public/menu");
+        this.setPreorder(false);
+      } else {
+        // this.$router.push(
+        //   `/table/public/table/${this.table_number}/orderid/${
+        //     this.orderId
+        //   }/payment?cdt=${this.cdt}&v=${this.v}`
+        // );
+        this.setPreorder(false);
       }
     });
   },
@@ -75,7 +89,8 @@ export default {
       "setV",
       "setAppConfig",
       "setSpinnerStatus",
-      "setLang"
+      "setLang",
+      "setPreorder"
     ]),
     delay(time) {
       return new Promise(resolve => {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\newOrderItemAdded;
+
 use App\Order;
 use App\Order_ext;
 use App\Order_history;
@@ -132,6 +133,7 @@ class OrderController extends Controller
         $cdt = $request->cdt;
         $v = $request->v;
 
+    
         //check if this QRcode valid in DB
         $new_table_link = Table_link::where('validation', $v)->first();
         //$new_table_link === null => QRcode is not valid
@@ -144,10 +146,12 @@ class OrderController extends Controller
             $time = strtotime($cdt);
             $day = date('y-m-d', $time);
 
+            
             //reformat time in DB
             $time_in_db = strtotime($new_table_link->link_generate_time);
             $day_in_db = date('y-m-d', $time_in_db);
 
+            //return array('day'=>$day,'db'=>$day_in_db);
             //check matched or not
             if ($day != $day_in_db) {
                 return response()->json(["message" => "this QR Code is incorrect, please contact staff!"], 400);
@@ -239,13 +243,13 @@ class OrderController extends Controller
             $new_orderList_ele["item"]["price"] = $price;
             $new_orderList_ele["item"]["upc"] = $p->upc;
             $image_path = '/table/public/images/items/' . $p->image;
-            $new_product["item"]["image"] = "";
+            $new_orderList_ele["item"]["image"] = "";
             if ($p->image === null || !file_exists($_SERVER['DOCUMENT_ROOT'].$image_path)) {
-                $new_product["image"] = 'default_product.jpg';
+                $new_orderList_ele["item"]["image"] = 'default_product.jpg';
 
             } else {
 
-                $new_product["image"] = $p->image;
+                $new_orderList_ele["item"]["image"] = $p->image;
             }
             // $new_orderList_ele["item"]["image"] = $p->image === null ? 'default_product.jpg' : $p->image;
             /**append options & exts only needed when mode is show options */

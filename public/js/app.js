@@ -62691,9 +62691,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -62718,11 +62715,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     this.delay(2000).then(function (res) {
       var qr = "=QROD=";
       _this.orderList.forEach(function (el) {
+        console.log(el);
         qr = qr + el.item.upc + ",";
         qr = qr + el.quantity + ",";
         qr = qr + "0" + ";";
         el.item.choices.forEach(function (choice) {
-          qr = qr + choice.barcode + "," + ele.quantity + "," + 0 + ";";
+          qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
         });
         el.item.options.forEach(function (option) {
           qr = qr + option.option_name + "," + option.pickedOption + ",";
@@ -62767,7 +62765,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         v: this.v,
         table_id: this.table_number,
         lang: this.lang,
-        preorder: this.app_conf.preorder
+        preorder: this.preorder
       }).then(function (res) {
         _this3.replaceList(res.data);
         _this3.setSpinnerStatus(false);
@@ -65942,66 +65940,6 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "icon-group" }, [
           _c("div", { staticClass: "payment-choice" }, [
-            _c("img", { attrs: { src: "/table/public/wechat.png", alt: "" } }),
-            _vm._v(" "),
-            _c("p", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.paymentMethod,
-                    expression: "paymentMethod"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  value: "credit",
-                  name: "paymentMethod"
-                },
-                domProps: { checked: _vm._q(_vm.paymentMethod, "credit") },
-                on: {
-                  change: function($event) {
-                    _vm.paymentMethod = "credit"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.app_conf.weChat))])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "payment-choice" }, [
-            _c("img", { attrs: { src: "/table/public/paypal.png", alt: "" } }),
-            _vm._v(" "),
-            _c("p", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.paymentMethod,
-                    expression: "paymentMethod"
-                  }
-                ],
-                attrs: {
-                  type: "radio",
-                  value: "paypal",
-                  name: "paymentMethod"
-                },
-                domProps: { checked: _vm._q(_vm.paymentMethod, "paypal") },
-                on: {
-                  change: function($event) {
-                    _vm.paymentMethod = "paypal"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.app_conf.paypal))])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "payment-choice" }, [
             _c("img", { attrs: { src: "/table/public/cash1.png", alt: "" } }),
             _vm._v(" "),
             _c("p", [
@@ -66624,7 +66562,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["productList", "orderList", "scrollPositionId", "app_conf", "table_number", "historyOrderList"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["productList", "orderList", "scrollPositionId", "app_conf", "table_number", "historyOrderList", "preorder"])),
   watch: {
     section: function section() {
       var sum = 0;
@@ -67702,7 +67640,7 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("transition", [
-                  _vm.table_number || _vm.app_conf.preorder
+                  _vm.table_number || _vm.preorder
                     ? _c(
                         "button",
                         {
@@ -67892,12 +67830,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     CartItem: __WEBPACK_IMPORTED_MODULE_1__CartItem_vue___default.a,
     OrderedCartItem: __WEBPACK_IMPORTED_MODULE_2__OrderedCartItem___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderList", "historyOrderList", "totalPriceOfOrder", "totalQuantityOfOrder", "orderId", "table_number", "isEN", "cdt", "v", "app_conf", "lang"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderList", "historyOrderList", "totalPriceOfOrder", "totalQuantityOfOrder", "orderId", "table_number", "isEN", "cdt", "v", "app_conf", "lang", "preorder"])),
   mounted: function mounted() {
     var _this = this;
 
     this.delay(1000).then(function (res) {
-      if (!_this.app_conf.preorder) {
+      if (!_this.preorder) {
         _this.updateOrderList();
       } else {
         var newList = localStorage.getItem("preorderList");
@@ -67927,7 +67865,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     //ToDo:: save data in database.
     confirmOrder: function confirmOrder() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.$router.push("/table/public/confirm");
       } else {
         this.$router.push("/table/public/table/" + this.table_number + "/orderid/" + this.orderId + "/payment?cdt=" + this.cdt + "&v=" + this.v);
@@ -67943,7 +67881,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         v: this.v,
         table_id: this.table_number,
         lang: this.lang,
-        preorder: this.app_conf.preorder
+        preorder: this.preorder
       }).then(function (res) {
         _this2.replaceList(res.data);
         _this2.setSpinnerStatus(false);
@@ -68060,7 +67998,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderList", "totalPriceOfOrder", "totalQuantityOfOrder", "orderId", "table_number", "app_conf"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderList", "totalPriceOfOrder", "totalQuantityOfOrder", "orderId", "table_number", "app_conf", "preorder"])),
   mounted: function mounted() {
     var optionPrice = 0;
     if (this.app_conf.show_option) {
@@ -68078,14 +68016,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.isExpand = !this.isExpand;
     },
     increase: function increase() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.increaseItemQuantityInOrderList(this.index);
       } else {
         this.increaseItemQuantityInOrderList(this.orderItem);
       }
     },
     decrease: function decrease() {
-      if (this.app_conf.preorder) {
+      if (this.preorder) {
         this.decreaseItemQuantityInOrderList(this.index);
       } else {
         this.decreaseItemQuantityInOrderList(this.orderItem);
@@ -68570,20 +68508,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["table_number", "app_conf", "lang", "pathFrom"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["table_number", "app_conf", "lang", "pathFrom", "preorder", "preorder"])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setLang"]), {
     setToCN: function setToCN() {
       localStorage.language_id = 1;
@@ -68611,7 +68539,7 @@ var render = function() {
       _c("h2", [
         _vm._v(
           _vm._s(
-            _vm.app_conf.preorder
+            _vm.preorder
               ? _vm.app_conf.preorder_title
               : _vm.app_conf.app_header_title + _vm.table_number
           )
@@ -68976,7 +68904,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["historyOrderList", "orderList", "isConfirmed", "orderId", "cdt", "v", "lang", "table_number", "pathFrom", "app_conf"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["historyOrderList", "orderList", "isConfirmed", "orderId", "cdt", "v", "lang", "table_number", "pathFrom", "app_conf", "preorder"])),
   mounted: function mounted() {
     var _this = this;
 
@@ -69004,7 +68932,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         v: this.v,
         table_id: this.table_number,
         lang: this.lang,
-        preorder: this.app_conf.preorder
+        preorder: this.preorder
       }).then(function (res) {
         _this2.replaceList(res.data);
         _this2.setSpinnerStatus(false);
@@ -70132,23 +70060,37 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     this.setTableNumber(this.$route.params.table);
     this.setCdt(this.$route.query.cdt);
     this.setV(this.$route.query.v);
+    console.log(this.$route.path);
     if (localStorage.language_id) {
       this.setLang(localStorage.language_id);
     }
     this.setAppConfig();
 
     this.delay(1000).then(function (res) {
-      if (_this.app_conf.preorder && !localStorage.getItem("preorderList")) {
-        _this.$router.push("/table/public/preorder");
-      } else if (_this.app_conf.preorder && _this.$route.path === "/table/public/") {
-        _this.$router.push("/table/public/confirm");
-      } else if (_this.app_conf.preorder) {
-        _this.$router.push("/table/public/preorder");
+      var myPath = _this.$route.path;
+      if (myPath === "/table/public/preorder" && _this.app_conf.preorder) {
+        if (localStorage.getItem("preorderList")) {
+          _this.$router.push("/table/public/confirm");
+          _this.setPreorder(true);
+        } else {
+          _this.$router.push("/table/public/preorder");
+          _this.setPreorder(true);
+        }
+      } else if (myPath === "/table/public/preorder" && !_this.app_conf.preorder) {
+        _this.$router.push("/table/public/menu");
+        _this.setPreorder(false);
+      } else {
+        // this.$router.push(
+        //   `/table/public/table/${this.table_number}/orderid/${
+        //     this.orderId
+        //   }/payment?cdt=${this.cdt}&v=${this.v}`
+        // );
+        _this.setPreorder(false);
       }
     });
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setOrderId", "setTableNumber", "setCdt", "setV", "setAppConfig", "setSpinnerStatus", "setLang"]), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setOrderId", "setTableNumber", "setCdt", "setV", "setAppConfig", "setSpinnerStatus", "setLang", "setPreorder"]), {
     delay: function delay(time) {
       return new Promise(function (resolve) {
         setTimeout(function () {
@@ -71706,6 +71648,7 @@ TWEEN.Interpolation = {
         cdt: "",
         v: "",
         site: 0,
+        preorder: false,
         //ToDo: store_id, store_name, store_url should be generated automaticly.
         store_id: 4,
         store_name: "Monkey King Thai Restaurant",
@@ -71714,6 +71657,9 @@ TWEEN.Interpolation = {
         app_conf: {}
     },
     getters: {
+        preorder: function preorder(state) {
+            return state.preorder;
+        },
         isConfirmed: function isConfirmed(state) {
             return state.isConfirmed;
         },
@@ -71798,6 +71744,9 @@ TWEEN.Interpolation = {
         }
     },
     mutations: {
+        updatePreorder: function updatePreorder(state, payload) {
+            state.preorder = payload;
+        },
         updateIsConfirmed: function updateIsConfirmed(state, payload) {
             state.isConfirmed = payload;
         },
@@ -71827,7 +71776,7 @@ TWEEN.Interpolation = {
             });
         },
         updateOrderList: function updateOrderList(state, payload) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 state.orderList = JSON.parse(payload);
             } else {
                 state.orderList = payload.pending_list;
@@ -71838,7 +71787,7 @@ TWEEN.Interpolation = {
             /** ToDo: change the feature implements process, now just send this new_item to controller let server side determine change the database record or not, and return new order list */
             /** preorder add logic: flag=true means there is a same item in orderList so only change the quantity, and loop the orderList array any info not match change flag to false, break the loop and create new row in orderList */
             console.log("add new item to order list @param payload", payload);
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 var flag = false;
                 for (var i = 0; i < state.orderList.length; i++) {
                     if (state.orderList[i].item.product_id === payload.product_id) {
@@ -71888,7 +71837,7 @@ TWEEN.Interpolation = {
             }
         },
         IncreaseItemQuantityInOrderList: function IncreaseItemQuantityInOrderList(state, newItem) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 state.orderList[newItem].quantity++;
                 localStorage.setItem("preorderList", JSON.stringify(state.orderList));
             } else {
@@ -71900,7 +71849,7 @@ TWEEN.Interpolation = {
         },
         RemoveItemFromOrderList: function RemoveItemFromOrderList(state, newItem) {
             state.orderList.splice(state.orderList.indexOf(newItem), 1);
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 localStorage.setItem("preorderList", JSON.stringify(state.orderList));
             }
         },
@@ -71914,7 +71863,7 @@ TWEEN.Interpolation = {
             state.table_number = payload;
         },
         decreaseQuantity: function decreaseQuantity(state, payload) {
-            if (state.app_conf.preorder) {
+            if (state.preorder) {
                 if (state.orderList[payload].quantity > 1) {
                     state.orderList[payload].quantity--;
                 } else {
@@ -71940,6 +71889,9 @@ TWEEN.Interpolation = {
     },
 
     actions: {
+        setPreorder: function setPreorder(context, status) {
+            context.commit("updatePreorder", status);
+        },
         setIsConfirmed: function setIsConfirmed(context, status) {
             context.commit("updateIsConfirmed", status);
         },

@@ -10,7 +10,7 @@
           {{app_conf.payment_method_title}}
         </h6>
         <div class="icon-group">
-          <div class="payment-choice">
+          <!-- <div class="payment-choice">
             <img src="/table/public/wechat.png" alt>
             <p>
               <input type="radio" value="credit" name="paymentMethod" v-model="paymentMethod">
@@ -23,7 +23,7 @@
               <input type="radio" value="paypal" name="paymentMethod" v-model="paymentMethod">
               <span>{{app_conf.paypal}}</span>
             </p>
-          </div>
+          </div>-->
           <div class="payment-choice">
             <img src="/table/public/cash1.png" alt>
             <p>
@@ -68,10 +68,7 @@
         <ul>
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
-              <img
-                :src="`/table/public/images/items/${orderItem.item.image}`"
-                alt
-              >
+              <img :src="`/table/public/images/items/${orderItem.item.image}`" alt>
             </div>
             <div class="orderItem-info-container">
               <div class="orderItem-name-quantity">
@@ -158,11 +155,12 @@ export default {
     this.delay(2000).then(res => {
       let qr = "=QROD=";
       this.orderList.forEach(el => {
+        console.log(el);
         qr = qr + el.item.upc + ",";
         qr = qr + el.quantity + ",";
         qr = qr + "0" + ";";
         el.item.choices.forEach(choice => {
-          qr = qr + choice.barcode + "," + ele.quantity + "," + 0 + ";";
+          qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
         });
         el.item.options.forEach(option => {
           qr = qr + option.option_name + "," + option.pickedOption + ",";
@@ -227,7 +225,7 @@ export default {
           v: this.v,
           table_id: this.table_number,
           lang: this.lang,
-          preorder: this.app_conf.preorder
+          preorder: this.preorder
         })
         .then(res => {
           this.replaceList(res.data);
