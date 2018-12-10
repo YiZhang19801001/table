@@ -62413,13 +62413,13 @@ var routes = [
 }, {
     path: "/table/public/table/:table/orderid/:orderid/confirm",
     component: __WEBPACK_IMPORTED_MODULE_3__components_Confirm_vue___default.a
-}, {
+}, { path: "/table/public/menu", component: __WEBPACK_IMPORTED_MODULE_2__components_Menu_vue___default.a }, {
     path: "/table/public/confirm",
     component: __WEBPACK_IMPORTED_MODULE_4__components_PreorderConfirm_vue___default.a
 }, {
-    path: "/table/public/preorder",
+    path: "/table/public/order",
     component: __WEBPACK_IMPORTED_MODULE_5__components_Preorder_vue___default.a
-}, { path: "/table/public/menu", component: __WEBPACK_IMPORTED_MODULE_2__components_Menu_vue___default.a }];
+}];
 
 /***/ }),
 /* 56 */
@@ -69203,9 +69203,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -69226,37 +69223,36 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
      * example: 106,2.5,0
      */
     this.delay(800).then(function (res) {
-      var newList = [];
-      if (localStorage.getItem("preorderList")) {
-        newList = localStorage.getItem("preorderList");
-        _this.replaceList(newList);
+      var newList = void 0;
+      if (localStorage.getItem("preorderList") && localStorage.getItem("preorderList").length > 0) {
+        _this.replaceList(localStorage.getItem("preorderList"));
       }
-      console.log(_this.orderList);
-    });
-    var qr = "=QROD=";
-    if (this.orderList === null || this.orderList.length === 0) {
-      return;
-    }
-    this.orderList.forEach(function (el) {
-      qr = qr + el.item.upc + ",";
-      qr = qr + el.quantity + ",";
-      qr = qr + "0" + ";";
-      el.item.choices.forEach(function (choice) {
-        qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
-      });
-      el.item.options.forEach(function (option) {
-        qr = qr + option.option_name + "," + option.pickedOption + ",";
-      });
-      //qr = qr + "0" + ";";
-    });
+      var qr = "=QROD=";
+      if (_this.orderList !== null || _this.orderList.length !== 0) {
+        _this.orderList.forEach(function (el) {
+          qr = qr + el.item.upc + ",";
+          qr = qr + el.quantity + ",";
+          qr = qr + "0" + ";";
+          el.item.choices.forEach(function (choice) {
+            qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
+          });
+          el.item.options.forEach(function (option) {
+            qr = qr + option.option_name + "," + option.pickedOption + ",";
+          });
+          //qr = qr + "0" + ";";
+        });
 
-    this.QrValue = qr.substr(0, qr.length - 1);
+        _this.QrValue = qr.substr(0, qr.length - 1);
+      } else {
+        _this.QrValue = qr;
+      }
+    });
   },
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderId", "orderList", "totalPriceOfOrder", "table_number", "pathFrom", "store_id", "totalPriceOfOrder", "store_name", "store_url", "app_conf", "v", "cdt", "lang", "isConfirmed"])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setSpinnerStatus", "replaceList", "setIsConfirmed"]), {
     back: function back() {
-      this.$router.push("/table/public/preorder");
+      this.$router.push("/table/public/order");
     },
     delay: function delay(time) {
       return new Promise(function (resolve) {
@@ -69286,7 +69282,7 @@ var render = function() {
         _c(
           "h6",
           [
-            _c("router-link", { attrs: { to: "/table/public/preorder" } }, [
+            _c("router-link", { attrs: { to: "/table/public/order" } }, [
               _c("i", { staticClass: "material-icons" }, [
                 _vm._v("arrow_back_ios")
               ])
@@ -70066,15 +70062,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
     this.setAppConfig();
 
-    this.delay(1000).then(function (res) {
+    this.delay(300).then(function (res) {
       var myPath = _this.$route.path;
       if (myPath === "/table/public/preorder" && _this.app_conf.preorder) {
-        if (localStorage.getItem("preorderList")) {
+        if (localStorage.getItem("preorderList") && localStorage.getItem("preorderList").length > 0) {
+          _this.setPreorder(true);
+          _this.replaceList(localStorage.getItem("preorderList"));
           _this.$router.push("/table/public/confirm");
-          _this.setPreorder(true);
         } else {
-          _this.$router.push("/table/public/preorder");
           _this.setPreorder(true);
+          _this.$router.push("/table/public/order");
         }
       } else if (myPath === "/table/public/preorder" && !_this.app_conf.preorder) {
         _this.$router.push("/table/public/menu");
@@ -70090,7 +70087,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     });
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setOrderId", "setTableNumber", "setCdt", "setV", "setAppConfig", "setSpinnerStatus", "setLang", "setPreorder"]), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setOrderId", "setTableNumber", "setCdt", "setV", "setAppConfig", "setSpinnerStatus", "setLang", "setPreorder", "replaceList"]), {
     delay: function delay(time) {
       return new Promise(function (resolve) {
         setTimeout(function () {

@@ -4,7 +4,7 @@
     <section>
       <div class="payment-method">
         <h6>
-          <router-link :to="`/table/public/preorder`">
+          <router-link :to="`/table/public/order`">
             <i class="material-icons">arrow_back_ios</i>
           </router-link>
           {{app_conf.preorder_confirm_text}}
@@ -35,10 +35,7 @@
         <ul>
           <li v-for="(orderItem,index) in orderList" :key="index">
             <div class="orderItem-img">
-              <img
-                :src="`/table/public/images/items/${orderItem.item.image}`"
-                alt
-              >
+              <img :src="`/table/public/images/items/${orderItem.item.image}`" alt>
             </div>
             <div class="orderItem-info-container">
               <div class="orderItem-name-quantity">
@@ -104,31 +101,33 @@ export default {
      * example: 106,2.5,0
      */
     this.delay(800).then(res => {
-      let newList = [];
-      if (localStorage.getItem("preorderList")) {
-        newList = localStorage.getItem("preorderList");
-        this.replaceList(newList);
+      let newList;
+      if (
+        localStorage.getItem("preorderList") &&
+        localStorage.getItem("preorderList").length > 0
+      ) {
+        this.replaceList(localStorage.getItem("preorderList"));
       }
-      console.log(this.orderList);
-    });
-    let qr = "=QROD=";
-    if (this.orderList === null || this.orderList.length === 0) {
-      return;
-    }
-    this.orderList.forEach(el => {
-      qr = qr + el.item.upc + ",";
-      qr = qr + el.quantity + ",";
-      qr = qr + "0" + ";";
-      el.item.choices.forEach(choice => {
-        qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
-      });
-      el.item.options.forEach(option => {
-        qr = qr + option.option_name + "," + option.pickedOption + ",";
-      });
-      //qr = qr + "0" + ";";
-    });
+      let qr = "=QROD=";
+      if (this.orderList !== null || this.orderList.length !== 0) {
+        this.orderList.forEach(el => {
+          qr = qr + el.item.upc + ",";
+          qr = qr + el.quantity + ",";
+          qr = qr + "0" + ";";
+          el.item.choices.forEach(choice => {
+            qr = qr + choice.barcode + "," + el.quantity + "," + 0 + ";";
+          });
+          el.item.options.forEach(option => {
+            qr = qr + option.option_name + "," + option.pickedOption + ",";
+          });
+          //qr = qr + "0" + ";";
+        });
 
-    this.QrValue = qr.substr(0, qr.length - 1);
+        this.QrValue = qr.substr(0, qr.length - 1);
+      } else {
+        this.QrValue = qr;
+      }
+    });
   },
   computed: {
     ...mapGetters([
@@ -151,7 +150,7 @@ export default {
   methods: {
     ...mapActions(["setSpinnerStatus", "replaceList", "setIsConfirmed"]),
     back() {
-      this.$router.push("/table/public/preorder");
+      this.$router.push("/table/public/order");
     },
     delay(time) {
       return new Promise(resolve => {

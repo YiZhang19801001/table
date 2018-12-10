@@ -17,13 +17,13 @@ export const routes = [
         path: "/table/public/table/:table/orderid/:orderid/confirm",
         component: Confirm
     },
+    { path: "/table/public/menu", component: Menu },
     {
         path: "/table/public/confirm",
         component: PreorderConfrim
     },
     {
-        path: "/table/public/preorder",
+        path: "/table/public/order",
         component: Preorder
-    },
-    { path: "/table/public/menu", component: Menu }
+    }
 ];

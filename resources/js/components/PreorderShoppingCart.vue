@@ -132,9 +132,6 @@ export default {
     position: relative;
     justify-content: center;
     height: 40px;
-    // background-image: url("http://www.aupos.com.au/wp-content/uploads/2017/03/logo.png");
-    // background-repeat: no-repeat;
-    // background-size: contain;
     background-color: rgb(235, 77, 75);
     transition: all 0.3s;
     &.expandHeader {

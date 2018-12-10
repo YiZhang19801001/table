@@ -55,15 +55,19 @@ export default {
     }
     this.setAppConfig();
 
-    this.delay(1000).then(res => {
+    this.delay(300).then(res => {
       const myPath = this.$route.path;
       if (myPath === "/table/public/preorder" && this.app_conf.preorder) {
-        if (localStorage.getItem("preorderList")) {
+        if (
+          localStorage.getItem("preorderList") &&
+          localStorage.getItem("preorderList").length > 0
+        ) {
+          this.setPreorder(true);
+          this.replaceList(localStorage.getItem("preorderList"));
           this.$router.push(`/table/public/confirm`);
-          this.setPreorder(true);
         } else {
-          this.$router.push(`/table/public/preorder`);
           this.setPreorder(true);
+          this.$router.push(`/table/public/order`);
         }
       } else if (
         myPath === "/table/public/preorder" &&
@@ -90,7 +94,8 @@ export default {
       "setAppConfig",
       "setSpinnerStatus",
       "setLang",
-      "setPreorder"
+      "setPreorder",
+      "replaceList"
     ]),
     delay(time) {
       return new Promise(resolve => {
