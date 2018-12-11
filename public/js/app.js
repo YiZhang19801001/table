@@ -62733,7 +62733,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["orderId", "orderList", "totalPriceOfOrder", "table_number", "pathFrom", "store_id", "totalPriceOfOrder", "store_name", "store_url", "app_conf", "v", "cdt", "lang", "isConfirmed"])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setSpinnerStatus", "replaceList", "setIsConfirmed"]), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["setSpinnerStatus", "replaceList", "setIsConfirmed", "setErrMsg"]), {
     back: function back() {
       this.$router.push(this.pathFrom);
     },
@@ -62770,6 +62770,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this3.replaceList(res.data);
         _this3.setSpinnerStatus(false);
       }).catch(function (err) {
+        _this3.setErrMsg(err.response.data.message);
+
         _this3.$router.push("/table/public/menu");
       });
     },
@@ -65936,35 +65938,7 @@ var render = function() {
             )
           ],
           1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "icon-group" }, [
-          _c("div", { staticClass: "payment-choice" }, [
-            _c("img", { attrs: { src: "/table/public/cash1.png", alt: "" } }),
-            _vm._v(" "),
-            _c("p", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.paymentMethod,
-                    expression: "paymentMethod"
-                  }
-                ],
-                attrs: { type: "radio", value: "cash", name: "paymentMethod" },
-                domProps: { checked: _vm._q(_vm.paymentMethod, "cash") },
-                on: {
-                  change: function($event) {
-                    _vm.paymentMethod = "cash"
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.app_conf.DiveIn))])
-            ])
-          ])
-        ])
+        )
       ])
     ]),
     _vm._v(" "),
@@ -67849,7 +67823,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     });
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["increaseItemQuantityInOrderList", "decreaseItemQuantityInOrderList", "removeItemQuantityFromOrderList", "setSpinnerStatus", "replaceList"]), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["increaseItemQuantityInOrderList", "decreaseItemQuantityInOrderList", "removeItemQuantityFromOrderList", "setSpinnerStatus", "replaceList", "setErrMsg"]), {
     /**methods to control only this component */
     toggle: function toggle() {
       this.isExpand = !this.isExpand;
@@ -67886,6 +67860,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this2.replaceList(res.data);
         _this2.setSpinnerStatus(false);
       }).catch(function (err) {
+        _this2.setErrMsg(err.response.data.message);
         _this2.$router.push("/table/public/menu");
       });
     },
@@ -68751,7 +68726,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   components: { CategoryList: __WEBPACK_IMPORTED_MODULE_0__CategoryList___default.a, ProductList: __WEBPACK_IMPORTED_MODULE_1__ProductList___default.a },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["spinnerShow", "orderList", "orderId", "cdt", "v", "table_number"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["spinnerShow", "orderList", "orderId", "cdt", "v", "table_number", "error_msg"])),
   mounted: function mounted() {
     this.setOrderId("");
     this.setTableNumber(0);
@@ -68794,11 +68769,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "warning-title" }, [
-                  _vm._v("Your QRCode is invalid")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "warning-message" }, [
-                  _vm._v("please, contact staff before making order")
+                  _vm._v(_vm._s(_vm.error_msg))
                 ])
               ])
             : _vm._e(),
@@ -71650,10 +71621,14 @@ TWEEN.Interpolation = {
         store_id: 4,
         store_name: "Monkey King Thai Restaurant",
         store_url: "http://192.168.1.221/",
+        error_msg: "this QRCode is Invalid, please contact staff",
         /**init config data */
         app_conf: {}
     },
     getters: {
+        error_msg: function error_msg(state) {
+            return state.error_msg;
+        },
         preorder: function preorder(state) {
             return state.preorder;
         },
@@ -71741,6 +71716,9 @@ TWEEN.Interpolation = {
         }
     },
     mutations: {
+        updateErrMsg: function updateErrMsg(state, payload) {
+            state.error_msg = payload;
+        },
         updatePreorder: function updatePreorder(state, payload) {
             state.preorder = payload;
         },
@@ -71886,6 +71864,9 @@ TWEEN.Interpolation = {
     },
 
     actions: {
+        setErrMsg: function setErrMsg(context, msg) {
+            context.commit("updateErrMsg", msg);
+        },
         setPreorder: function setPreorder(context, status) {
             context.commit("updatePreorder", status);
         },

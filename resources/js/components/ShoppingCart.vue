@@ -90,7 +90,8 @@ export default {
       "decreaseItemQuantityInOrderList",
       "removeItemQuantityFromOrderList",
       "setSpinnerStatus",
-      "replaceList"
+      "replaceList",
+      "setErrMsg"
     ]),
     /**methods to control only this component */
     toggle() {
@@ -132,6 +133,7 @@ export default {
           this.setSpinnerStatus(false);
         })
         .catch(err => {
+          this.setErrMsg(err.response.data.message);
           this.$router.push("/table/public/menu");
         });
     },

@@ -9,8 +9,8 @@
           </router-link>
           {{app_conf.payment_method_title}}
         </h6>
-        <div class="icon-group">
-          <!-- <div class="payment-choice">
+        <!-- <div class="icon-group">
+          <div class="payment-choice">
             <img src="/table/public/wechat.png" alt>
             <p>
               <input type="radio" value="credit" name="paymentMethod" v-model="paymentMethod">
@@ -23,7 +23,7 @@
               <input type="radio" value="paypal" name="paymentMethod" v-model="paymentMethod">
               <span>{{app_conf.paypal}}</span>
             </p>
-          </div>-->
+          </div>
           <div class="payment-choice">
             <img src="/table/public/cash1.png" alt>
             <p>
@@ -31,7 +31,7 @@
               <span>{{app_conf.DiveIn}}</span>
             </p>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <!-- payment methdo seciton end -->
@@ -190,7 +190,12 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(["setSpinnerStatus", "replaceList", "setIsConfirmed"]),
+    ...mapActions([
+      "setSpinnerStatus",
+      "replaceList",
+      "setIsConfirmed",
+      "setErrMsg"
+    ]),
     back() {
       this.$router.push(this.pathFrom);
     },
@@ -232,6 +237,8 @@ export default {
           this.setSpinnerStatus(false);
         })
         .catch(err => {
+          this.setErrMsg(err.response.data.message);
+
           this.$router.push("/table/public/menu");
         });
     },

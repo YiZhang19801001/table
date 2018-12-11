@@ -5,8 +5,8 @@
     <div class="bodyContainer">
         <div v-if="show" class="header">
             <p class="close-button-wrap"><i class="material-icons" @click="close">close</i></p>
-            <h2 class="warning-title">Your QRCode is invalid</h2>
-            <p class="warning-message">please, contact staff before making order</p>
+            <h2 class="warning-title">{{error_msg}}</h2>
+            <!-- <p class="warning-message">please, contact staff before making order</p> -->
         </div>
         <CategoryList></CategoryList>
         <ProductList></ProductList>
@@ -34,7 +34,8 @@ export default {
       "orderId",
       "cdt",
       "v",
-      "table_number"
+      "table_number",
+      "error_msg"
     ])
   },
   mounted() {

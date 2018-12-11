@@ -21,10 +21,14 @@ export default {
         store_id: 4,
         store_name: "Monkey King Thai Restaurant",
         store_url: "http://192.168.1.221/",
+        error_msg: "this QRCode is Invalid, please contact staff",
         /**init config data */
         app_conf: {}
     },
     getters: {
+        error_msg: state => {
+            return state.error_msg;
+        },
         preorder: state => {
             return state.preorder;
         },
@@ -114,6 +118,9 @@ export default {
         }
     },
     mutations: {
+        updateErrMsg(state, payload) {
+            state.error_msg = payload;
+        },
         updatePreorder(state, payload) {
             state.preorder = payload;
         },
@@ -292,6 +299,9 @@ export default {
     },
 
     actions: {
+        setErrMsg(context, msg) {
+            context.commit("updateErrMsg", msg);
+        },
         setPreorder(context, status) {
             context.commit("updatePreorder", status);
         },

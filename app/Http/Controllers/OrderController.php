@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\newOrderItemAdded;
-
 use App\Order;
 use App\Order_ext;
 use App\Order_history;
@@ -133,7 +132,6 @@ class OrderController extends Controller
         $cdt = $request->cdt;
         $v = $request->v;
 
-    
         //check if this QRcode valid in DB
         $new_table_link = Table_link::where('validation', $v)->first();
         //$new_table_link === null => QRcode is not valid
@@ -142,19 +140,30 @@ class OrderController extends Controller
         }
         //check timestamp
         if ($new_table_link !== null) {
+            $tz = 'Australia/Sydney';
+
             //reformat income time
             $time = strtotime($cdt);
             $day = date('y-m-d', $time);
 
-            
             //reformat time in DB
             $time_in_db = strtotime($new_table_link->link_generate_time);
             $day_in_db = date('y-m-d', $time_in_db);
 
-            //return array('day'=>$day,'db'=>$day_in_db);
+            //reformat today's date
+            $today = new DateTime("now", new DateTimeZone($tz));
+            $time_today = $today->format('y-m-d');
+
+            //return array('day' => $day, 'db' => $day_in_db, 'today' => $time_today);
             //check matched or not
-            if ($day != $day_in_db) {
-                return response()->json(["message" => "this QR Code is incorrect, please contact staff!"], 400);
+            if ($day < $time_today) {
+                return response()->json(["message" => "this QR Code is expired, please contact staff!"], 400);
+
+            } else if ($day != $day_in_db && $day == $time_today) {
+                return response()->json(["message" => "this QR Code is not found, please try it later or contact staff!"], 400);
+            } else if ($day != $day_in_db) {
+                return response()->json(["message" => "this QR Code is invalid, please contact staff!"], 400);
+
             }
         }
         /**end validation */
@@ -244,7 +253,7 @@ class OrderController extends Controller
             $new_orderList_ele["item"]["upc"] = $p->upc;
             $image_path = '/table/public/images/items/' . $p->image;
             $new_orderList_ele["item"]["image"] = "";
-            if ($p->image === null || !file_exists($_SERVER['DOCUMENT_ROOT'].$image_path)) {
+            if ($p->image === null || !file_exists($_SERVER['DOCUMENT_ROOT'] . $image_path)) {
                 $new_orderList_ele["item"]["image"] = 'default_product.jpg';
 
             } else {
